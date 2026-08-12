@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental da Umbanda, teste o seu conhecimento</title>
+<link rel="preconnect" href="https://quizsarava.lovable.app" crossorigin>
+<link rel="dns-prefetch" href="https://quizsarava.lovable.app">
+
+<!-- ====================================================================
+     CONFIGURAÇÃO DO AFILIADO, troque os valores abaixo antes de publicar
+     ==================================================================== -->
+<script>
+  window.QUIZ_CONFIG = {
+    CHECKOUT: "https://pay.cakto.com.br/3cosy9j_1013806",   // <-- Plano Essencial (R$19,90)
+    CHECKOUT_COMPLETO: "https://pay.cakto.com.br/34j85n8_1013784",  // <-- Formação Completa (R$37)
+    FB_PIXEL_ID: "",                     // <-- seu Pixel do Facebook (deixe vazio p/ não carregar)
+    CLARITY_ID: "",                      // <-- seu ID do Microsoft Clarity (opcional)
+    // UTMify: os scripts oficiais ficam logo abaixo deste bloco (Pixel + captura de UTMs)
+
+    // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
+    // Enquanto a lista estiver vazia, o bloco de depoimentos não aparece na página.
+    // Formato: { texto:"...", nome:"Maria S.", local:"Salvador/BA", foto:"URL da foto (opcional)" }
+    DEPOIMENTOS: []
+  };
+  (function(){ var id=window.QUIZ_CONFIG.FB_PIXEL_ID; if(!id) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', id); fbq('track', 'PageView');
+  })();
+</script>
+
+<!-- UTMify: Pixel de vendas -->
+<script>
+  window.pixelId = "6a5a9626beeb6265dff605d4";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<!-- UTMify: captura de UTMs (leva a origem do trafego ate o checkout) -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://quizsarava.lovable.app">
+<link rel="dns-prefetch" href="https://player.vimeo.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#1a1a1a; --ink-soft:#55555f; --faint:#8e8e99;
+    --line:#e6e6e6; --track:#f1f1f4; --surface:#ffffff; --surface2:#f7f7fb;
+    --blue:#07b0ed; --blue-d:#0592c4;
+    --coral:#e94135; --coral-d:#d12a1f; --coral-soft:rgba(233,65,53,.09);
+    --purple-ink:#6d28d9;
+    --bluepill-ink:#2563eb;
+    --good:#1f9d63; --good-bg:#e8f6ef; --good-line:rgba(31,157,99,.28);
+    --gold:#e0a42a;
+    --shadow:0 10px 34px -14px rgba(0,0,0,.18);
+    --shadow-sm:0 6px 20px -12px rgba(0,0,0,.22);
+    --r:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Nunito",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased;
+    font-size:17px;
+  }
+  #stage{max-width:520px;margin:0 auto;padding:12px 16px 40px;min-height:100vh;display:flex;flex-direction:column}
+
+  /* ---- topbar ---- */
+  #topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(6px);
+    margin:-12px -16px 10px;padding:12px 16px 10px;border-bottom:1px solid var(--line)}
+  .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .brand{line-height:1}
+  .brand .a{display:block;font-size:12px;letter-spacing:.16em;color:rgba(26,26,26,.7);font-weight:600;text-transform:none}
+  .brand .b{display:block;font-size:25px;letter-spacing:.04em;color:var(--blue);font-weight:900}
+  .rightgrp{display:flex;align-items:center;gap:8px}
+  .musicbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;color:var(--coral);transition:transform .15s,background .2s;flex-shrink:0;padding:0}
+  .musicbtn:hover{transform:scale(1.06);background:var(--coral-soft)}
+  .saldo{display:flex;align-items:center;gap:8px;padding:5px 13px 5px 10px;border-radius:999px;
+    background:linear-gradient(to right,rgba(147,51,234,.14),rgba(79,70,229,.14));border:1px solid rgba(147,51,234,.28)}
+  .saldo .gem{font-size:16px}
+  .saldo .stxt{font-size:8.5px;letter-spacing:.12em;color:var(--purple-ink);text-transform:uppercase;line-height:1.1;font-weight:800;opacity:.85}
+  .saldo .snum{font-size:16px;color:var(--purple-ink);font-weight:900;font-variant-numeric:tabular-nums}
+  .prog{height:9px;background:var(--track);border-radius:999px;overflow:hidden}
+  .prog > i{display:block;height:100%;width:6%;border-radius:999px;background:linear-gradient(90deg,var(--coral),#ff7a70);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+
+  main#app{flex:1;padding-top:4px}
+  .view{animation:rise .4s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---- typography ---- */
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:800;text-align:center;margin:0 0 10px}
+  p{margin:0 0 12px}
+  .lead{color:var(--ink);text-align:center;font-size:17px;font-weight:500;line-height:1.55}
+  .center{text-align:center}
+  .hl{color:var(--coral);font-weight:800}
+  .hlv{color:var(--blue);font-weight:800}
+  .qtitle{font-size:clamp(24px,6.5vw,30px);line-height:1.25;text-align:center;margin:2px 0 16px;font-weight:800;letter-spacing:-.3px;text-wrap:balance;color:var(--ink)}
+  /* bloco de destaque coral e pergunta de segmentação, no padrão do original */
+  .lead-hl{color:var(--coral);text-align:center;font-size:18.5px;font-weight:700;line-height:1.45;margin:0 0 14px}
+  .mark{background:linear-gradient(180deg,transparent 52%,rgba(233,65,53,.24) 52%);color:var(--coral-d);font-weight:900;padding:0 3px;border-radius:3px}
+  .segq{color:var(--coral);text-align:center;font-size:20px;font-weight:700;margin:16px 0 10px}
+  .sec-h{font-size:23px;text-align:center;margin:6px 0 6px;font-weight:900;letter-spacing:-.3px;color:var(--ink)}
+
+  .guide{display:flex;align-items:center;gap:9px;justify-content:center;margin:0 auto 14px;width:fit-content;
+    padding:6px 15px 6px 6px;border-radius:999px;background:linear-gradient(to right,rgba(59,130,246,.16),rgba(96,165,250,.09));border:1px solid rgba(59,130,246,.22)}
+  .guide img{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#eef}
+  .guide span.g{font-size:14px;color:var(--bluepill-ink);font-weight:800}
+  .guide .dot{width:7px;height:7px;border-radius:50%;background:var(--good);animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+  .warnbox{background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:12px;padding:13px 15px;margin:14px 0;font-size:15px;color:var(--ink-soft);font-weight:600;text-align:center}
+
+  /* ---- options ---- */
+  .opts{display:flex;flex-direction:column;gap:11px;margin:14px 0 8px}
+  .opts.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .opts.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;
+    background:linear-gradient(135deg,var(--coral),#ff5b4f);border:2px solid transparent;border-radius:14px;padding:16px 17px;color:#fff;
+    font-size:16.5px;font-weight:800;font-family:inherit;box-shadow:0 10px 22px -12px rgba(233,65,53,.7);
+    transition:transform .15s,box-shadow .2s,filter .2s}
+  .opt:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 14px 26px -12px rgba(233,65,53,.85)}
+  .opt:focus-visible{outline:3px solid rgba(233,65,53,.45);outline-offset:2px}
+  .opt.sel{filter:brightness(.9);box-shadow:0 0 0 3px rgba(233,65,53,.35),0 8px 18px -12px rgba(233,65,53,.7)}
+  .opt .oimg{width:46px;height:46px;border-radius:10px;object-fit:cover;flex-shrink:0;background:#fff;padding:2px}
+  .opt .chev{margin-left:auto;color:rgba(255,255,255,.9);flex-shrink:0;transition:transform .15s}
+  .opt:hover .chev{transform:translateX(3px);color:#fff}
+  .opt.card{flex-direction:column;text-align:center;gap:10px;padding:12px 9px;background:#fff;color:var(--ink);
+    border:2.5px solid var(--coral);box-shadow:0 8px 20px -14px rgba(233,65,53,.6)}
+  .opt.card:hover{background:#fff;filter:none;transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(233,65,53,.55)}
+  .opt.card.sel{background:var(--coral-soft)}
+  .opt.card .oimg{width:100%;height:auto;aspect-ratio:1;border-radius:12px;background:transparent;padding:0}
+  .opt.card .chev{display:none}
+  .opt.card span{font-size:15px;font-weight:800;color:var(--coral);line-height:1.25}
+
+  .qimg-wrap{display:flex;justify-content:center;margin-bottom:8px}
+  .qimg{width:100%;max-width:240px;display:block;border-radius:14px}
+
+  /* ---- buttons ---- */
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-tap-highlight-color:transparent;border:none;
+    border-radius:14px;padding:17px 20px;font-size:17px;font-weight:800;font-family:inherit;text-decoration:none;
+    transition:transform .15s,box-shadow .2s,background .2s;line-height:1.25;text-align:center}
+  .btn-gold{background:var(--coral);color:#fff;box-shadow:0 12px 26px -12px rgba(233,65,53,.75)}
+  .btn-gold:hover{transform:translateY(-2px);background:var(--coral-d)}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink-soft);font-weight:700;font-size:15px;padding:13px}
+  .btn-ghost:hover{border-color:var(--coral);color:var(--ink)}
+  .pulse-cta{animation:cta 2.4s ease-in-out infinite}
+  @keyframes cta{0%,100%{transform:none}50%{transform:scale(1.02)}}
+
+  .inp{width:100%;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px;color:var(--ink);font-size:17px;font-family:inherit;font-weight:700;text-align:center;margin:6px 0 14px}
+  .inp:focus{outline:none;border-color:var(--coral)}
+  .inp::placeholder{color:var(--faint);font-weight:600}
+
+  /* ---- analyzing ---- */
+  .analy{display:flex;flex-direction:column;gap:11px;margin:22px 0}
+  .astep{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;opacity:.4;transition:opacity .4s;font-size:15.5px;font-weight:700;color:var(--ink);text-align:left}
+  .astep.on{opacity:1;box-shadow:var(--shadow-sm)}
+  .astep .ic{width:22px;height:22px;flex-shrink:0}
+  .spinner{width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--coral);border-radius:50%;animation:spin .8s linear infinite;margin:0 3px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .check{color:var(--good)}
+
+  /* ---- result ---- */
+  .score-ring{width:172px;height:172px;margin:8px auto 6px;position:relative;display:flex;align-items:center;justify-content:center}
+  .score-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+  .score-ring .num{font-size:46px;font-weight:900;color:var(--coral);font-variant-numeric:tabular-nums}
+  .score-lbl{text-align:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:2px}
+  .tier{text-align:center;font-size:28px;color:var(--ink);margin:6px 0 4px;font-weight:900;letter-spacing:-.3px}
+  .mirror{background:var(--surface2);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:0 12px 12px 0;padding:14px 16px;font-size:16px;color:var(--ink-soft);margin:14px 0;font-weight:600;text-align:left}
+  .mirror b{color:var(--ink)}
+  .charimg{width:116px;display:block;margin:0 auto 8px}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+  .card p{font-size:16px;font-weight:600;margin:0}
+  .mockup{width:100%;border-radius:14px;display:block;margin:8px 0}
+
+  .videobox{position:relative;width:100%;max-width:290px;margin:10px auto 4px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0c0c14}
+  .videobox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vfacade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:#0c0c14}
+  .vfacade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .vfacade .vplay{position:relative;width:64px;height:64px;border-radius:50%;background:rgba(233,65,53,.94);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;padding-left:4px;box-shadow:0 10px 26px rgba(0,0,0,.55);transition:transform .15s}
+  .vfacade:hover .vplay{transform:scale(1.08)}
+  .vfacade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+  .vfacade .vplay{z-index:1}
+  .video-cap{text-align:center;font-size:13.5px;color:var(--faint);margin:0 0 12px;font-weight:700}
+  .video-cap a{color:var(--blue)}
+
+  .vis{list-style:none;padding:0;margin:14px auto;text-align:left;max-width:380px}
+  .vis li{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px;font-weight:700;font-size:16px;color:var(--ink)}
+  .vis li span{color:var(--good);font-weight:900;margin-right:8px}
+
+  .stack{list-style:none;padding:0;margin:12px 0}
+  .stack li{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;text-align:left}
+  .stack li:last-child{border-bottom:none}
+  .stack .ck{color:var(--good);flex-shrink:0;font-weight:900}
+  .stack .nm{flex:1;font-weight:700}
+  .stack .nm b{color:var(--ink);font-weight:800}
+  .stack .nm small{display:block;color:var(--faint);font-size:13.5px;font-weight:600;line-height:1.35}
+  .stack .pr{color:var(--faint);text-decoration:line-through;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+  .stack .free{color:var(--good);font-weight:800;font-size:11.5px;letter-spacing:.04em}
+  .totrow{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;padding-top:12px;border-top:1px dashed var(--line)}
+  .totrow .tl{color:var(--ink-soft);font-size:15px;font-weight:700}
+  .totrow .tv{color:var(--faint);text-decoration:line-through;font-size:21px;font-weight:900}
+
+  .bonus-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+  .bonus-grid img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+
+  .badge-top{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:#fff;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin:0 auto 6px}
+
+  .redeem{background:linear-gradient(to right,rgba(147,51,234,.10),rgba(79,70,229,.08));border:1px solid rgba(147,51,234,.24);border-radius:14px;padding:15px 16px;text-align:center;margin:6px 0 14px}
+  .redeem .rt{font-size:15px;color:var(--ink-soft);font-weight:700}
+  .redeem b{color:var(--purple-ink)}
+
+  /* ---- planos (tiers) ---- */
+  .plans-title{text-align:center;font-weight:900;font-size:24px;color:var(--ink);margin:18px 0 4px;letter-spacing:-.3px}
+  .plans-title .u2{color:var(--coral-d);text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:3px;text-underline-offset:4px;white-space:nowrap}
+  .plans{display:flex;flex-direction:column;gap:16px;margin:12px 0 6px}
+  .plan{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 18px 20px;box-shadow:var(--shadow-sm);position:relative}
+  .plan.reco{border:2.5px solid var(--coral);box-shadow:0 18px 44px -18px rgba(233,65,53,.4)}
+  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-weight:900;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 15px;border-radius:999px;white-space:nowrap}
+  .plan-name{font-weight:900;font-size:18px;color:var(--ink);letter-spacing:-.2px;text-align:center;margin:2px 0 8px}
+  .plan-name.reco{color:var(--coral-d)}
+  .plan-price{display:flex;align-items:baseline;gap:8px;justify-content:center;margin:2px 0 2px}
+  .plan-price .from{color:var(--faint);text-decoration:line-through;font-size:15px;font-weight:700}
+  .plan-price .now{font-size:36px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1}
+  .plan-price .now small{font-size:15px;font-weight:800;color:var(--ink-soft)}
+  .plan-feat{list-style:none;padding:0;margin:12px 0 14px;text-align:left}
+  .plan-feat li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;font-weight:700;color:var(--ink);padding:5px 0}
+  .plan-feat li .ck{color:var(--good);font-weight:900;flex-shrink:0;line-height:1.4}
+  .plan-feat li span:not(.ck){flex:1;min-width:0}
+  .plan-feat li b{color:var(--coral-d)}
+  .plan-mais{text-align:center;font-size:14px;font-weight:800;color:var(--good);background:var(--good-bg);border:1px solid var(--good-line);border-radius:10px;padding:8px 10px;margin:4px 0 12px}
+  .plan-mais b{color:#177a4b}
+  .plan-reforco{text-align:center;font-size:13.5px;color:var(--coral-d);font-weight:800;margin:0 0 12px}
+  .plan-reforco b{color:var(--coral-d)}
+  .plan-reforco.soft{color:var(--ink-soft);font-weight:700}
+  .plan-sub{text-align:center;font-size:14px;color:var(--ink-soft);font-weight:700;margin:-4px 0 8px}
+  .plan-scroll{text-align:center;font-size:14px;font-weight:800;color:var(--ink-soft);margin:-2px 0 -2px;padding:0 8px;line-height:1.5}
+  .plan-scroll b{color:var(--coral-d)}
+  .plan-scroll .arw{display:inline-block;animation:arwbob 1.3s ease-in-out infinite}
+  @keyframes arwbob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+  .plan-sub b{color:var(--ink)}
+  .cmp{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cmp th,.cmp td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line)}
+  .cmp thead th{font-weight:900;color:var(--ink);background:var(--surface2);font-size:13.5px}
+  .cmp tbody td:first-child,.cmp thead th:first-child{text-align:left;font-weight:700;color:var(--ink-soft)}
+  .cmp .cx{background:var(--coral-soft);color:var(--coral-d);font-weight:900}
+  .cmp tbody tr:last-child td{border-bottom:none}
+  .btn-plan2{background:#fff;border:2px solid var(--coral);color:var(--coral-d);box-shadow:none;animation:none}
+  .btn-plan2:hover{background:var(--coral-soft);transform:translateY(-2px)}
+
+  .timer{display:flex;align-items:center;justify-content:center;gap:9px;margin:12px 0;font-size:15px;color:var(--ink-soft);font-weight:700}
+  .timer .clock{font-variant-numeric:tabular-nums;font-size:24px;color:var(--coral);font-weight:900;letter-spacing:.04em}
+
+  .price-img{width:100%;max-width:340px;display:block;margin:8px auto 4px;border-radius:12px}
+
+  .guarantee{display:flex;gap:14px;align-items:center;background:var(--good-bg);border:1px solid var(--good-line);border-radius:14px;padding:15px 16px;margin:14px 0;text-align:left}
+  .guarantee .seal{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid var(--good);font-size:25px}
+  .guarantee .gt{font-weight:900;color:var(--good);font-size:15px;margin-bottom:2px}
+  .guarantee p{margin:0;font-size:14.5px;color:var(--ink-soft);font-weight:600}
+
+  .proof-wrap{margin:16px 0}
+  .proof-lbl{text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:800;margin-bottom:10px}
+  .testi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm);text-align:left}
+  .testi .stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:5px}
+  .testi p{font-size:15.5px;font-style:italic;color:var(--ink);margin:0 0 8px;font-weight:600}
+  .testi .who{display:flex;align-items:center;gap:9px}
+  .testi .av{width:36px;height:36px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--faint);object-fit:cover}
+  .testi .who b{font-size:14px;color:var(--ink)}
+  .testi .who small{display:block;font-size:12px;color:var(--faint);font-weight:600}
+
+  .secure-img{width:100%;max-width:360px;display:block;margin:14px auto 0}
+  footer{margin-top:18px;text-align:center}
+  footer img{max-width:100%}
+  .warn-note{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px;font-weight:600}
+  .stacknote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:4px;font-weight:700}
+  .devnote{max-width:520px;margin:8px auto 0;font-size:12px;color:var(--faint);opacity:.75;text-align:center}
+
+  @media (max-width:380px){
+    .opt{font-size:16px;padding:15px 14px}
+    .opts.grid3{gap:7px}
+    .opt.card{padding:10px 6px}
+    .opt.card span{font-size:14.5px}
+    /* planos em telas pequenas */
+    .plan{padding:16px 13px 18px}
+    .plan-name{font-size:16px}
+    .plan-feat li{font-size:13.5px;gap:7px}
+    .plan-price .now{font-size:32px}
+    .plan-badge{font-size:10px;padding:5px 11px}
+    .plans-title{font-size:21px}
+    .btn{font-size:15.5px;padding:16px 12px}
+    .btn-plan2{font-size:14.5px}
+  }
+  /* garante que nenhum texto vaze horizontalmente */
+  .plan-name,.plan-feat li,.plan-reforco,.btn{overflow-wrap:anywhere;word-break:break-word}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="topbar">
+    <div class="topline">
+      <div class="brand"><span class="a">Mapas Mentais da</span><span class="b">UMBANDA</span></div>
+      <div class="rightgrp">
+        <button class="musicbtn" id="musicBtn" title="Ligar/desligar música" aria-label="Ligar ou desligar música de fundo">🔈</button>
+        <div class="saldo" id="saldo" style="visibility:hidden">
+          <span class="gem">💎</span>
+          <div><div class="stxt">Saldo Espiritual</div><div class="snum"><span id="saldoNum">0</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="prog"><i id="progBar"></i></div>
+  </div>
+
+  <main id="app"></main>
+
+  <footer>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+      <img src="img/helena.png" alt="Mãe Helena de Oxóssi" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--line2)" onerror="this.style.display='none'">
+      <div style="text-align:left">
+        <div style="font-weight:800;color:var(--ink);font-size:14px">Conteúdo de Mãe Helena de Oxóssi</div>
+        <div style="color:var(--faint);font-size:12.5px;font-weight:700">Casa dos Ventos · Salvador/BA</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--faint);font-size:12.5px;font-weight:700;margin:12px 0 0">🔒 Pagamento 100% seguro, processado pela Cakto</p>
+  </footer>
+</div>
+<audio id="bgm" src="audio/ori-background.mp3" loop preload="none"></audio>
+<p class="devnote">⚙️ Antes de publicar: preencha QUIZ_CONFIG (link de afiliado, pixels e depoimentos reais) no topo do arquivo. Remova esta linha depois.</p>
+
+<script>
+(function(){
+  "use strict";
+  var CFG=window.QUIZ_CONFIG||{};
+  var BASE="https://quizsarava.lovable.app/assets/";
+  function A(f){return BASE+f;}
+  var CHECKOUT=CFG.CHECKOUT||"SEU_LINK_DE_AFILIADO";
+  var CHECKOUT_COMPLETO=CFG.CHECKOUT_COMPLETO||"SEU_LINK_COMPLETO";
+
+  var IMG={
+    iniciante:A("personagem-iniciante-novo-CPEGKlyv.png"),
+    umbandista:A("personagem-umbandista-novo-CFD7hGAP.png"),
+    guia:A("personagem-guia-3d-C5LUUTbc.png"),
+    orixas:A("option-orixas-BJo4pGll.png"),
+    pretovelhos:A("option-preto-velhos-CQh7x9tk.png"),
+    caridade:A("option-caridade-CVJE28jO.png"),
+    sim:A("result-option-sim-CeTr9lC_.png"),
+    talvez:A("option-talvez-DPJvBUqf.png"),
+    incerteza:A("option-incerteza-BRhgOzPW.png"),
+    q_entidades:A("question-entidades-DMFtjsZs.png"),
+    q_pontos:A("question-pontos-riscados-DSbgj6ry.png"),
+    q_dificuldades:A("question-dificuldades-Dl1jNYxa.gif"),
+    q_app:A("question-aplicativo-DY88zYaI.png"),
+    q_orixas:A("question-orixas-CFli7e6m.png"),
+    q_rituais:A("question-rituais-CbJQp2Lx.png"),
+    q_altar:A("question-altar-CvW1ySTd.png"),
+    q_elementos:A("question-elementos-DQvYZev0.png"),
+    b1:A("bonus-1-C8Q0zK5Z.png"), b2:A("bonus-2-C4A5njPY.png"),
+    b3:A("bonus-3-Cm0f-TZ4.png"), b4:A("bonus-4-Be6u0da-.png"),
+    b6mais:A("bonus-6-mais-B82pbZGs.png"),
+    mockup:A("super-mockup-oferta-ZDvK5T8y.png"),
+    preco:"https://quizsarava.lovable.app/__l5e/assets-v1/042e462b-9f87-428e-bccd-53438d427811/preco-1990.png",
+    secure:"https://quizsarava.lovable.app/__l5e/assets-v1/38505c1d-d952-4d16-9eb9-7f75af2eacd5/wiapy-secure-checkout.png"
+  };
+  // vídeos do Vimeo (proporção real de cada um)
+  var VID_APP={id:"1180197671", ratio:"196/426", cap:"Prévia do Aplicativo", thumb:"https://i.vimeocdn.com/video/2142250322-e31f4a7adfd3b850c7a2caa0c008fcf0f9723c0fcdcd69008d957ca051f0e0c7-d_640?region=us"};
+  var VID_IMP={id:"1180197942", ratio:"240/426", cap:"Versão impressa e encadernada", thumb:"https://i.vimeocdn.com/video/2142250564-c03bcbbeb4b839b26ca7055d733aa62a2c249426821422dea254181134412503-d_640?region=us"};
+
+  var CHEV='<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>';
+  function imgTag(src,cls,alt){return '<img class="'+(cls||'')+'" src="'+src+'" alt="'+(alt||'')+'" onerror="this.style.display=\'none\'">';}
+  function videoBox(v){
+    return '<div class="videobox" style="aspect-ratio:'+v.ratio+'">'+
+      '<button class="vfacade" data-vid="'+v.id+'" aria-label="Reproduzir '+v.cap+'">'+
+        '<img src="'+v.thumb+'" alt="" loading="lazy">'+
+        '<span class="vplay">▶</span>'+
+      '</button></div>'+
+      '<p class="video-cap">▶ '+v.cap+' · <a href="https://vimeo.com/'+v.id+'" target="_blank" rel="noopener">abrir vídeo</a></p>';
+  }
+
+  var Q=[
+    { id:"fundamento", kind:"knowledge", grid:true,
+      q:"Qual é o principal fundamento da religião de Umbanda?",
+      opts:[
+        {t:"Os Orixás", img:IMG.orixas, correct:false},
+        {t:"Os Pretos Velhos", img:IMG.pretovelhos, correct:false},
+        {t:"A Caridade", img:IMG.caridade, correct:true}
+      ]
+    },
+    { id:"entidades", kind:"scale", img:IMG.q_entidades,
+      q:"Você conhece as principais entidades que trabalham nos terreiros?",
+      opts:[{t:"Sim, todas!",w:3},{t:"Conheço algumas.",w:2},{t:"Ainda estou aprendendo.",w:1},{t:"Não conheço nenhuma!",w:0}]
+    },
+    { id:"pontos", kind:"knowledge", img:IMG.q_pontos,
+      q:"O que são os pontos riscados na Umbanda?",
+      opts:[
+        {t:"Desenhos sagrados que identificam e chamam as entidades", correct:true},
+        {t:"Um tipo de oferenda", correct:false},
+        {t:"Não sei, mas estou curioso(a)!", correct:false}
+      ]
+    },
+    { id:"dificuldade", kind:"pain", img:IMG.q_dificuldades,
+      q:"Você sente dificuldade para organizar tudo o que aprende sobre a Umbanda?",
+      opts:[
+        {t:"Sim, sinto falta de um material organizado.", w:0, pain:"organizacao"},
+        {t:"Um pouco, mas consigo aprender.", w:1},
+        {t:"Não, aprendo com facilidade.", w:2}
+      ]
+    },
+    { id:"app", kind:"desire", grid:true, img:IMG.q_app,
+      q:"Você gostaria de um aplicativo que explica de forma visual e prática todos os fundamentos da Umbanda?",
+      opts:[
+        {t:"Sim, seria incrível!", img:IMG.sim, w:2},
+        {t:"Talvez, dependendo do material.", img:IMG.talvez, w:1},
+        {t:"Não tenho certeza ainda.", img:IMG.incerteza, w:0}
+      ]
+    },
+    { id:"arquetipos", kind:"scale", img:IMG.q_orixas,
+      q:"Você conhece os arquétipos e as regências de cada Orixá?",
+      opts:[{t:"Sim, conheço e entendo.",w:2},{t:"Conheço alguns, mas tenho dúvidas.",w:1,pain:"orixas"},{t:"Não, gostaria de aprender.",w:0,pain:"orixas"}]
+    },
+    { id:"rituais", kind:"pain", img:IMG.q_rituais,
+      q:"Como você se sente em relação aos rituais básicos da Umbanda?",
+      opts:[{t:"Confiante, já sei realizar.",w:2},{t:"Um pouco inseguro(a), mas quero aprender.",w:1,pain:"rituais"},{t:"Perdido(a), preciso de ajuda.",w:0,pain:"rituais"}]
+    },
+    { id:"altar", kind:"pain", img:IMG.q_altar,
+      q:"Você sabe montar um altar (congá) simples para se conectar aos Orixás em casa?",
+      opts:[{t:"Sim, já tenho o meu.",w:2},{t:"Tenho dúvidas de como fazer certo.",w:1,pain:"altar"},{t:"Não, mas adoraria aprender.",w:0,pain:"altar"}]
+    },
+    { id:"elementos", kind:"scale", img:IMG.q_elementos,
+      q:"Você entende como os Orixás se relacionam com os elementos da natureza?",
+      opts:[{t:"Sim, profundamente.",w:2},{t:"Um pouco, mas tenho muito a aprender.",w:1},{t:"Não, mas acho fascinante.",w:0}]
+    }
+  ];
+
+  var STACK=[
+    {n:"App Mapa Mental da Umbanda", d:"Tudo o que levaria anos para conectar, num só lugar e para sempre", p:97},
+    {n:"Bônus 1: Formação Fundamental da Doutrina", d:"Comece pela base certa e pare de se sentir perdido(a)", p:37},
+    {n:"Bônus 2: Audiobook Experience", d:"Estude ouvindo, no trânsito ou fazendo outra coisa", p:29},
+    {n:"Bônus 3: Biblioteca dos Tronos e Regências", d:"Entenda de uma vez a hierarquia divina, sem confusão", p:24},
+    {n:"Bônus 4: Atlas das 95 Ervas Sagradas", d:"Saiba qual erva usar em cada banho e defumação, sem errar", p:19},
+    {n:"Bônus 5: Reino Mineral e Pedras Sagradas", d:"Descubra o poder de cada pedra na sua proteção", p:17},
+    {n:"Bônus 6: Ritual de Defumação Guiado", d:"Limpe e proteja a sua casa passo a passo, com segurança", p:14},
+    {n:"Bônus 7: Compêndio de Práticas Ritualísticas", d:"Faça cada ritual do jeito certo, sem medo de errar", p:12},
+    {n:"Bônus 8: Coletânea de Pontos Cantados", d:"Os pontos essenciais para firmar a sua fé na gira", p:11},
+    {n:"Bônus 9: Iconografia Sagrada da Umbanda", d:"Reconheça cada Orixá num piscar de olhos", p:10},
+    {n:"Bônus 10: Círculo Fechado no WhatsApp", d:"Nunca mais fique com uma dúvida sem resposta", p:27}
+  ];
+
+  var PAIN={
+    organizacao:"sente falta de um material organizado num só lugar",
+    orixas:"quer entender melhor os arquétipos dos Orixás",
+    rituais:"ainda se sente inseguro(a) nos rituais",
+    altar:"gostaria de aprender a montar o seu altar em casa"
+  };
+
+  var FLOW=["intro","q0","q1","q2","q6","q7","q8","analyzing","result","promessa","offer"];
+  var state={ i:0, seg:null, name:"", points:0, wsum:0, wmax:0, pains:[], displayScore:70, tier:null, answering:false };
+
+  var app=document.getElementById("app");
+  var saldoBox=document.getElementById("saldo");
+  var saldoNum=document.getElementById("saldoNum");
+  var progBar=document.getElementById("progBar");
+
+  // ---- música de fundo ----
+  var bgm=document.getElementById("bgm");
+  var musicBtn=document.getElementById("musicBtn");
+  var musicOn=true;              // ligada por padrao (a pessoa desliga no botao se quiser)
+  if(bgm){ bgm.volume=0.15; }    // volume baixo, de fundo
+  function updateMusicIcon(){ if(musicBtn) musicBtn.textContent = musicOn ? "🔊" : "🔈"; }
+  function tryStart(){ if(bgm && musicOn && bgm.paused){ bgm.play().catch(function(){}); } }
+  function startMusic(){ tryStart(); } // usado tambem no handler de clique do quiz
+  if(bgm){ tryStart(); }         // tenta tocar de imediato (navegador costuma bloquear ate a 1a interacao)
+  // 1o toque/rolagem/tecla em qualquer lugar libera o audio
+  document.addEventListener("pointerdown", tryStart, {passive:true});
+  document.addEventListener("touchstart", tryStart, {passive:true});
+  document.addEventListener("keydown", tryStart);
+  if(musicBtn){ musicBtn.addEventListener("click", function(e){ e.stopPropagation();
+    if(!bgm) return;
+    musicOn=!musicOn;
+    if(musicOn){ bgm.play().catch(function(){}); } else { bgm.pause(); }
+    updateMusicIcon();
+  }); }
+  updateMusicIcon();
+
+  function animateSaldo(to){
+    saldoBox.style.visibility="visible";
+    var from=state.points; state.points=to;
+    var start=null;
+    function step(ts){ if(!start)start=ts; var p=Math.min((ts-start)/500,1);
+      saldoNum.textContent=Math.round(from+(to-from)*p);
+      if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+    setTimeout(function(){ saldoNum.textContent=to; },560);
+  }
+  function setProgress(){
+    var nameIdx=FLOW.indexOf("name"); var pct;
+    if(state.i<=nameIdx){ pct=6+(state.i/nameIdx)*64; }
+    else { var after=FLOW.length-1-nameIdx; pct=70+((state.i-nameIdx)/after)*30; }
+    progBar.style.width=Math.min(pct,100)+"%";
+  }
+  function go(delta){ state.i+=delta; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+  function guideLine(txt){
+    return '<div class="guide">'+imgTag(IMG.guia,"","Pai Oxalá")+
+      '<span class="g">✨ '+txt+'</span><span class="dot"></span></div>';
+  }
+  // Depoimentos: só aparecem se você cadastrar depoimentos REAIS em QUIZ_CONFIG.DEPOIMENTOS
+  function proof(label){
+    var list=(CFG.DEPOIMENTOS)||[];
+    if(!list.length) return "";
+    return '<div class="proof-wrap"><div class="proof-lbl">'+label+'</div>'+
+      list.map(function(d){
+        var av=d.foto?('<img class="av" src="'+d.foto+'" alt="">'):'<span class="av">👤</span>';
+        return '<div class="testi"><div class="stars">⭐⭐⭐⭐⭐</div><p>“'+d.texto+'”</p>'+
+          '<div class="who">'+av+'<div><b>'+(d.nome||'')+'</b><small>'+(d.local||'')+'</small></div></div></div>';
+      }).join("")+'</div>';
+  }
+
+  function render(){
+    state.answering=false;
+    setProgress();
+    var key=FLOW[state.i];
+    if(key==="intro") return intro();
+    if(key.charAt(0)==="q") return question(parseInt(key.slice(1),10));
+    if(key==="name") return nameView();
+    if(key==="analyzing") return analyzing();
+    if(key==="result") return result();
+    if(key==="promessa") return promessa();
+    if(key==="pitch") return pitch();
+    if(key==="visao") return visao();
+    if(key==="delivery") return delivery();
+    if(key==="bonus") return bonus();
+    if(key==="offer") return offer();
+  }
+
+  function promessa(){
+    app.innerHTML='<div class="view">'+
+      '<p class="eyebrow">O que muda pra você</p>'+
+      '<h2 class="qtitle" style="margin-bottom:14px">Imagine você daqui a <span class="hl">algumas semanas</span>…</h2>'+
+      '<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Veja como é o <b>app por dentro</b>:</p>'+
+      '<div class="promo-video" style="max-width:300px;margin:0 auto 6px">'+videoBox(VID_APP)+'</div>'+
+      '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso é só uma <b>pequena amostra</b>. Por dentro, o app tem muito mais.</p>'+
+      '<div class="card" style="text-align:left">'+
+        '<p style="margin:0 0 10px">Abrindo o Mapa e entendendo cada fundamento com <b>clareza</b>: os Orixás, os guias, os rituais, sem se perder no meio de tanta informação.</p>'+
+        '<p style="margin:0 0 10px">Estudando no seu tempo, <b>guiado(a) passo a passo</b>, como quem tem um mestre ao lado.</p>'+
+        '<p style="margin:0">Mais firme na sua fé, e pronto(a) pra <b>servir ainda mais na caridade</b>. 🕯️</p>'+
+      '</div>'+
+      '<div style="text-align:center;background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:14px;padding:14px 16px;margin:0 0 14px">'+
+        '<p style="margin:0 0 6px;font-weight:800;color:var(--ink);font-size:15px">🎥 E ainda tem <b>aulas gravadas</b> explicando cada conteúdo, passo a passo.</p>'+
+        '<p style="margin:0;font-weight:800;color:var(--coral-d);font-size:15px">E tudo isso começa por apenas <span style="font-size:21px;font-weight:900">R$19,90</span>.</p>'+
+      '</div>'+
+      guideLine("É essa a caminhada que preparei pra você...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar essa caminhada <span aria-hidden="true">→</span></button>'+
+    '</div>';
+    var v=app.querySelector('video');
+    if(v){ v.addEventListener('play',function(){ if(bgm && !bgm.paused){ bgm.pause(); musicOn=false; updateMusicIcon(); } }); }
+  }
+
+  function intro(){
+    app.innerHTML='<div class="view">'+
+      '<p class="eyebrow">Descubra o seu nível · 2 minutos</p>'+
+      '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">2 minutos</span>, descubra o que você mais precisa aprender na Umbanda. E o app reúne tudo isso, organizado pra você.</h2>'+
+      '<p class="lead" style="font-size:16px;margin-bottom:10px">Responda só <b>6 perguntinhas</b> rápidas: elas mostram onde focar a sua caminhada.</p>'+
+      '<p class="lead-hl">Ficando <span class="mark">até o final</span>, você libera uma <span class="mark">condição exclusiva e especial</span> para receber o app. 🎁</p>'+
+      '<div class="warnbox"><b class="hl">⚠️ Atenção!</b> Continue apenas se seu objetivo é aprender sobre a Umbanda com respeito e interesse genuíno.</div>'+
+      '<p class="segq">Você é iniciante ou já é umbandista?</p>'+
+      '<div class="opts grid2">'+
+        '<button class="opt card" data-act="seg" data-v="iniciante">'+imgTag(IMG.iniciante,"oimg","Iniciante")+'<span>Sou Iniciante</span></button>'+
+        '<button class="opt card" data-act="seg" data-v="umbandista">'+imgTag(IMG.umbandista,"oimg","Umbandista")+'<span>Já sou Umbandista</span></button>'+
+      '</div></div>';
+  }
+
+  function question(qi){
+    var q=Q[qi];
+    var imgHtml=q.img?('<div class="qimg-wrap">'+imgTag(q.img,"qimg","Ilustração da pergunta")+'</div>'):"";
+    var cls=q.grid?"opts grid3":"opts";
+    var optsHtml=q.opts.map(function(o,oi){
+      if(q.grid && o.img){
+        return '<button class="opt card" data-act="ans" data-qi="'+qi+'" data-oi="'+oi+'">'+imgTag(o.img,"oimg",o.t)+'<span>'+o.t+'</span></button>';
+      }
+      var im=o.img?imgTag(o.img,"oimg",o.t):"";
+      return '<button class="opt" data-act="ans" data-qi="'+qi+'" data-oi="'+oi+'">'+im+'<span>'+o.t+'</span>'+CHEV+'</button>';
+    }).join("");
+    app.innerHTML='<div class="view">'+guideLine("Pai Oxalá está te guiando...")+imgHtml+
+      '<h2 class="qtitle">'+q.q+'</h2>'+
+      '<div class="'+cls+'" id="optbox">'+optsHtml+'</div></div>';
+  }
+
+  function answer(qi,oi){
+    if(state.answering) return; state.answering=true;
+    var q=Q[qi]; var o=q.opts[oi];
+    if(typeof o.w==="number"){ state.wsum+=o.w; var mx=Math.max.apply(null,q.opts.map(function(x){return x.w||0;})); state.wmax+=mx; }
+    if(q.kind==="knowledge"){ state.wmax+=2; if(o.correct)state.wsum+=2; } // pontua em silêncio, sem revelar a resposta
+    if(o.pain && state.pains.indexOf(o.pain)===-1) state.pains.push(o.pain);
+    animateSaldo(state.points+20);
+    var box=document.getElementById("optbox");
+    if(box){ var btns=box.querySelectorAll(".opt"); btns.forEach(function(b){ b.disabled=true; b.style.cursor="default"; });
+      if(btns[oi]) btns[oi].classList.add("sel"); }
+    setTimeout(function(){ go(1); },260);
+  }
+
+  function nameView(){
+    app.innerHTML='<div class="view center">'+
+      imgTag(IMG.guia,"charimg","Pai Oxalá")+
+      '<p class="eyebrow">Quase lá</p>'+
+      '<h2 class="qtitle" style="margin-bottom:6px">Antes de revelar o seu resultado: como você se chama?</h2>'+
+      '<p class="lead" style="font-size:15.5px">Assim eu preparo o seu diagnóstico de forma personalizada.</p>'+
+      '<input class="inp" id="nameInp" type="text" placeholder="Seu primeiro nome" autocomplete="given-name" maxlength="24">'+
+      '<button class="btn btn-gold" data-act="savename">Revelar meu resultado <span aria-hidden="true">✨</span></button>'+
+      '<button class="btn btn-ghost" style="margin-top:10px" data-act="savename" data-skip="1">Prefiro não dizer</button>'+
+      '</div>';
+    setTimeout(function(){ var el=document.getElementById("nameInp"); if(el)el.focus(); },250);
+  }
+
+  function computeResult(){
+    var ratio = state.wmax>0 ? state.wsum/state.wmax : .6;
+    state.displayScore = Math.round(50 + ratio*28);
+    if(state.seg==="umbandista") state.displayScore=Math.min(78, state.displayScore+4);
+    var s=state.displayScore;
+    if(s>=72) state.tier={n:"Guardião(ã) do Axé", e:"🌟", d:"Você já carrega um conhecimento profundo. Falta apenas organizar tudo num só lugar para praticar com ainda mais segurança."};
+    else if(s>=58) state.tier={n:"Aprendiz de Fé", e:"🕯️", d:"Você já tem uma base sólida e o coração no lugar certo. Com o método certo, os próximos passos vêm rápido."};
+    else state.tier={n:"Semente de Axé", e:"🌱", d:"Você está no comecinho de uma linda jornada, e no momento perfeito para aprender do jeito certo, sem se perder."};
+  }
+
+  function mirrorText(){
+    if(!state.pains.length) return "";
+    var parts=state.pains.slice(0,2).map(function(p){return PAIN[p];});
+    var joined = parts.length===2 ? parts[0]+" e "+parts[1] : parts[0];
+    return '<div class="mirror">Você nos contou que <b>'+joined+'</b>. Isso explica por que, mesmo se dedicando, <b>algumas dúvidas ainda insistem em aparecer</b>. Não falta dedicação, falta um método que conecte todas as peças.</div>';
+  }
+
+  function diagnostico(){
+    var s=state.displayScore;
+    var forte;
+    if(s>=72){ forte="Você já domina bem os fundamentos e tem uma base espiritual sólida."; }
+    else if(s>=58){ forte="Você já entende o essencial e tem o coração no lugar certo."; }
+    else { forte="Você está começando com uma vontade verdadeira, que é o mais importante de tudo."; }
+    var PG={rituais:"realizar os rituais básicos com segurança",altar:"montar e cuidar do seu altar (congá) em casa",orixas:"entender os arquétipos e as regências de cada Orixá",organizacao:"organizar num só lugar tudo o que você aprende"};
+    var pl=(state.pains||[]).slice(0,2).map(function(p){return PG[p];}).filter(function(x){return x;});
+    var gap;
+    if(pl.length){ gap="Você mostrou que ainda busca segurança em "+(pl.length===2?pl[0]+" e "+pl[1]:pl[0])+". É exatamente aí que um material claro e passo a passo muda o seu jogo."; }
+    else if(s>=72){ gap="O que falta é ter tudo num só lugar, organizado, para consultar na hora da dúvida."; }
+    else { gap="Falta uma base organizada para você não se perder no meio de tanta informação solta."; }
+    return '<div class="card" style="text-align:left">'+
+      '<p style="margin:0 0 10px;font-weight:800;color:var(--ink)">📋 O que o seu diagnóstico revela</p>'+
+      '<p style="margin:0 0 9px;font-size:15px">✅ <b>Seu ponto forte:</b> '+forte+'</p>'+
+      '<p style="margin:0 0 10px;font-size:15px">🎯 <b>Onde focar agora:</b> '+gap+'</p>'+
+      '<p style="margin:0;font-size:15px;color:var(--coral-d);font-weight:700">💡 E é exatamente pra isso que existe o <b>Mapa Mental da Umbanda</b>: ele reúne tudo num só lugar, de forma simples e visual, pra você aprender sem se perder e resolver isso de vez.</p>'+
+    '</div>';
+  }
+
+  function result(){
+    computeResult();
+    var nm=state.name?(", "+state.name):"";
+    var char=state.seg==="umbandista"?IMG.umbandista:IMG.iniciante;
+    app.innerHTML='<div class="view center">'+
+      '<p class="score-lbl">Sua pontuação</p>'+
+      '<div class="score-ring">'+
+        '<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#ececf0" stroke-width="10"/>'+
+        '<circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327"/>'+
+        '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e94135"/><stop offset="1" stop-color="#07b0ed"/></linearGradient></defs></svg>'+
+        '<div class="num" id="scoreNum">0%</div>'+
+      '</div>'+
+      imgTag(char,"charimg","")+
+      '<p class="eyebrow" style="margin-bottom:2px">Seu perfil'+nm+'</p>'+
+      '<div class="tier">'+state.tier.e+' '+state.tier.n+'</div>'+
+      '<p class="lead">'+state.tier.d+'</p>'+
+      mirrorText()+
+      diagnostico()+
+      proof("Quem já está estudando com o material")+
+      guideLine("Preparei o caminho ideal para o seu perfil...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Quero chegar ao próximo nível <span aria-hidden="true">→</span></button>'+
+      '</div>';
+    var target=state.displayScore;
+    var ring=document.getElementById("ring");
+    var numEl=document.getElementById("scoreNum");
+    requestAnimationFrame(function(){ ring.style.transition="stroke-dashoffset 1.3s cubic-bezier(.2,.8,.2,1)"; ring.style.strokeDashoffset=(327-327*target/100); });
+    var start=null;
+    function step(ts){ if(!start)start=ts; var p=Math.min((ts-start)/1300,1);
+      numEl.textContent=Math.round(target*p)+"%"; if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+    setTimeout(function(){ numEl.textContent=target+"%"; ring.style.strokeDashoffset=(327-327*target/100); },1350);
+  }
+
+  function analyzing(){
+    app.innerHTML='<div class="view center">'+
+      '<p class="eyebrow">Consultando os guias</p>'+
+      '<h2 class="qtitle">Preparando o seu diagnóstico...</h2>'+
+      '<div class="analy">'+
+        '<div class="astep" id="as0"><span class="ic spinner"></span><span>Comparando suas respostas com os fundamentos da Umbanda...</span></div>'+
+        '<div class="astep" id="as1"><span class="ic spinner"></span><span>Identificando quais conhecimentos você já domina...</span></div>'+
+        '<div class="astep" id="as2"><span class="ic spinner"></span><span>Descobrindo o que pode acelerar a sua evolução...</span></div>'+
+        '<div class="astep" id="as3"><span class="ic spinner"></span><span>Preparando a sua recomendação personalizada...</span></div>'+
+      '</div></div>';
+    var checkSvg='<svg class="ic check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+    [400,1200,2100,2900].forEach(function(d,ix){
+      setTimeout(function(){ var el=document.getElementById("as"+ix); if(!el)return;
+        el.classList.add("on"); el.querySelector(".ic").outerHTML=checkSvg; },d);
+    });
+    setTimeout(function(){ if(FLOW[state.i]==="analyzing") go(1); },3600);
+  }
+
+  function pitch(){
+    app.innerHTML='<div class="view center">'+
+      '<p class="eyebrow">Por que ainda restam dúvidas</p>'+
+      '<h2 class="qtitle">A maioria aprende Umbanda <span class="hl">em pedaços soltos</span></h2>'+
+      '<p class="lead">Um livro aqui, um vídeo ali, uma explicação no terreiro. Nunca se conecta tudo, e aí são anos de caminhada com dúvidas básicas ainda aparecendo.</p>'+
+      imgTag(IMG.mockup,"mockup","App Mapa Mental da Umbanda")+
+      '<p class="lead">O <b class="hlv">Mapa Mental da Umbanda</b> é como ter <b class="hl">um professor 24 horas por dia</b>: você entende os Orixás, os pontos riscados e as entidades sem decorar dezenas de livros.</p>'+
+      guideLine("Deixa eu te mostrar o que muda pra você...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Faz sentido! E o que muda pra mim? <span aria-hidden="true">→</span></button>'+
+      '</div>';
+  }
+
+  function visao(){
+    app.innerHTML='<div class="view center">'+
+      '<p class="eyebrow">Imagine daqui a algumas semanas</p>'+
+      '<h2 class="qtitle">Você, na gira, <span class="hl">entendendo tudo</span> com naturalidade:</h2>'+
+      '<ul class="vis">'+
+        '<li><span>✓</span>Por que cada Orixá atua daquela forma</li>'+
+        '<li><span>✓</span>O verdadeiro significado dos pontos riscados</li>'+
+        '<li><span>✓</span>Como identificar cada linha de trabalho</li>'+
+        '<li><span>✓</span>Quando e como usar cada fundamento</li>'+
+      '</ul>'+
+      '<p class="lead">Não para impressionar ninguém, mas para <b class="hl">servir melhor na caridade</b> e honrar os seus guias e Orixás com o conhecimento que eles merecem.</p>'+
+      guideLine("É essa a jornada que preparei para você...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Quero isso! Mas como eu recebo? <span aria-hidden="true">→</span></button>'+
+      '</div>';
+  }
+
+  function delivery(){
+    app.innerHTML='<div class="view">'+
+      '<h2 class="sec-h">Como você recebe</h2>'+
+      '<p class="lead">Assim que o pagamento é confirmado, o seu <b>acesso individual chega no seu e-mail</b>. Você abre o aplicativo e já começa, no mesmo dia.</p>'+
+      '<p class="lead" style="font-size:16px">Lá dentro você vai <b>clicando e recebendo cada material</b>: os mapas mentais, os guias, os áudios e todos os bônus. Estude no celular, no tablet ou no computador, ou imprima e encaderne para ter na mão.</p>'+
+      '<p class="warn-note">Não achou o e-mail? Confira a caixa de spam ou o lixo eletrônico.</p>'+
+      '<p class="segq" style="margin-top:20px">Veja uma prévia do que você vai receber</p>'+
+      videoBox(VID_APP)+
+      videoBox(VID_IMP)+
+      guideLine("Pronto para começar a sua jornada?")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Entendi! Mas quanto custa? <span aria-hidden="true">→</span></button>'+
+      '</div>';
+  }
+
+  function bonus(){
+    app.innerHTML='<div class="view">'+
+      '<div class="center"><span class="badge-top">🎁 Combo Completo</span></div>'+
+      '<h2 class="sec-h">Além do App, você leva 10 bônus</h2>'+
+      '<p class="lead" style="font-size:16px">Cada um pensado para acelerar o seu aprendizado e fortalecer a sua fé:</p>'+
+      '<div class="bonus-grid">'+
+        imgTag(IMG.b1,"","Bônus 1")+imgTag(IMG.b2,"","Bônus 2")+
+        imgTag(IMG.b3,"","Bônus 3")+imgTag(IMG.b4,"","Bônus 4")+
+      '</div>'+
+      imgTag(IMG.b6mais,"mockup","Mais 6 bônus exclusivos")+
+      proof("Quem já está estudando com o material")+
+      '<p class="lead-hl" style="margin-top:8px">E tudo isso começa por apenas <span class="mark">R$19,90</span>.</p>'+
+      guideLine("Veja a sua oferta de hoje...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Ver a minha oferta! <span aria-hidden="true">→</span></button>'+
+      '</div>';
+  }
+
+  function stackRow(s){
+    return '<li><span class="ck">✓</span><span class="nm"><b>'+s.n+'</b><small>'+s.d+'</small></span>'+
+      '<span style="text-align:right"><span class="pr">R$'+s.p+'</span><br><span class="free">GRÁTIS</span></span></li>';
+  }
+
+  function offer(){
+    var total=STACK.reduce(function(a,s){return a+s.p;},0);
+    var nm=state.name?state.name+", ":"";
+    app.innerHTML='<div class="view">'+
+      '<div class="center"><span class="badge-top">🔥 O mais vendido</span></div>'+
+      '<h2 class="sec-h">'+nm+'você está a um passo de <span class="hl">entender a Umbanda com clareza</span></h2>'+
+      '<div class="redeem"><div class="rt">💎 Você acumulou <b>'+state.points+' pontos</b> de Saldo Espiritual.</div><div class="rt" style="margin-top:4px">Eles desbloquearam o <b>valor promocional de hoje</b>, válido enquanto esta página estiver aberta.</div></div>'+
+      '<div class="timer"><span>⏳ Sua condição expira em</span><span class="clock" id="clock">15:00</span></div>'+
+      '<div class="card"><ul class="stack">'+STACK.map(function(s){return stackRow(s);}).join("")+
+        '<div class="totrow"><span class="tl">Valor real de tudo:</span><span class="tv">R$'+total+'</span></div>'+
+        '<p class="stacknote">Você não paga nada perto disso hoje 👇</p>'+
+      '</ul></div>'+
+      '<p class="plans-title">Aqui você tem <span class="u2">2 planos</span> 👇</p>'+
+      '<p class="center lead" style="font-size:15.5px;margin:2px 0 14px">Sua jornada pode <b>começar por apenas R$19,90</b>.<br>E se quiser a <b class="hlv">experiência completa</b>, veja a <b class="hlv">Formação Completa</b> logo abaixo.</p>'+
+      '<div class="plans">'+
+        // ---- Plano Essencial primeiro (o preço esperado: R$19,90) ----
+        '<div class="plan">'+
+          '<div class="plan-name">Plano Essencial</div>'+
+          '<p class="plan-sub">Ideal para quem quer <b>começar</b>.</p>'+
+          '<div class="plan-price"><span class="from">De R$67</span><span class="now">R$19<small>,90</small></span></div>'+
+          '<ul class="plan-feat">'+
+            '<li><span class="ck">✓</span><span>Acesso ao App Mapa Mental</span></li>'+
+            '<li><span class="ck">✓</span><span>Formação Fundamental</span></li>'+
+            '<li><span class="ck">✓</span><span>Atlas das Ervas</span></li>'+
+            '<li><span class="ck">✓</span><span>Pontos Cantados</span></li>'+
+          '</ul>'+
+          '<p class="plan-reforco soft">Aprenda os fundamentos da Umbanda no seu ritmo.</p>'+
+          '<a class="btn btn-plan2" href="'+CHECKOUT+'" data-act="buy" target="_blank" rel="noopener">Quero o Essencial</a>'+
+        '</div>'+
+        '<p class="plan-scroll">Quer a <b>experiência completa</b>, com as vídeo-aulas? Role um pouco para baixo <span class="arw">👇</span> e veja a <b>Formação Completa (R$37)</b>.</p>'+
+        // ---- Formação Completa (destaque), enquadrada como "+R$17" ----
+        '<div class="plan reco">'+
+          '<span class="plan-badge">⭐ Mais escolhido</span>'+
+          '<div class="plan-name reco">Formação Completa</div>'+
+          '<p class="plan-sub">Para quem quer <b>realmente entender</b> a Umbanda.</p>'+
+          '<div class="plan-price"><span class="from">De R$297</span><span class="now">R$37<small>,00</small></span></div>'+
+          '<p class="plan-mais">🎉 Só <b>R$17 a mais</b> que o Essencial, e você leva tudo</p>'+
+          '<ul class="plan-feat">'+
+            '<li><span class="ck">✓</span><span><b>O App Mapa Mental + 3 bônus</b> (tudo do Essencial)</span></li>'+
+            '<li><span class="ck">✓</span><span><b>Todos os 10 bônus exclusivos</b></span></li>'+
+            '<li><span class="ck">✓</span><span><b>Trilha completa em vídeo</b>, 44 aulas em 7 módulos</span></li>'+
+            '<li><span class="ck">✓</span><span>Grupo fechado no WhatsApp</span></li>'+
+          '</ul>'+
+          '<p class="plan-reforco">Você aprende <b>vendo como se faz</b>, não só lendo. É o que acelera de verdade.</p>'+
+          '<a class="btn btn-gold pulse-cta" href="'+CHECKOUT_COMPLETO+'" data-act="buy" target="_blank" rel="noopener">Quero a Formação Completa <span aria-hidden="true">🔒</span></a>'+
+        '</div>'+
+      '</div>'+
+      '<p class="center lead" style="font-size:14px;margin-top:12px">Pagamento único · Acesso vitalício · Sem mensalidade · Pix, cartão e boleto 🔒</p>'+
+      '<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
+      proof("O que dizem os alunos")+
+      '</div>';
+    startClock();
+  }
+
+  var clockTimer=null;
+  function startClock(){
+    var end=Date.now()+15*60*1000;
+    var el=document.getElementById("clock");
+    if(clockTimer)clearInterval(clockTimer);
+    clockTimer=setInterval(function(){
+      if(!document.getElementById("clock")){clearInterval(clockTimer);return;}
+      var left=Math.max(0,Math.floor((end-Date.now())/1000));
+      var m=Math.floor(left/60), s=left%60;
+      el.textContent=(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+      if(left<=0)clearInterval(clockTimer);
+    },1000);
+  }
+
+  app.addEventListener("click",function(e){
+    var fac=e.target.closest(".vfacade");
+    if(fac){
+      if(bgm){ bgm.pause(); musicOn=false; updateMusicIcon(); } // pausa a musica de fundo p/ o video ter o som limpo
+      var box=fac.closest(".videobox"); var id=fac.getAttribute("data-vid");
+      box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      return;
+    }
+    startMusic();
+    var t=e.target.closest("[data-act]"); if(!t)return;
+    var act=t.getAttribute("data-act");
+    if(act==="seg"){ if(state.answering)return; state.answering=true; state.seg=t.getAttribute("data-v"); animateSaldo(state.points+20); setTimeout(function(){go(1);},200); }
+    else if(act==="ans"){ answer(parseInt(t.getAttribute("data-qi"),10),parseInt(t.getAttribute("data-oi"),10)); }
+    else if(act==="next"){ go(1); }
+    else if(act==="savename"){ var el=document.getElementById("nameInp"); if(el && !t.getAttribute("data-skip")){ state.name=(el.value||"").trim().replace(/[<>]/g,""); } go(1); }
+    else if(act==="buy"){ var href=t.getAttribute("href")||""; if(/SEU_LINK/.test(href)){ e.preventDefault(); alert("⚙️ Configuração: preencha o link deste plano em QUIZ_CONFIG (CHECKOUT ou CHECKOUT_COMPLETO) no topo do arquivo."); } }
+  });
+  app.addEventListener("keydown",function(e){
+    if(e.key==="Enter" && e.target.id==="nameInp"){ e.preventDefault(); state.name=(e.target.value||"").trim().replace(/[<>]/g,""); go(1); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
