@@ -38,6 +38,13 @@
     VIDEO_APP: "video/app-mapa-mental.mp4",
     VIDEO_APP_POSTER: "img/app-mapa-mental-capa.jpg",
 
+    // Personagens dos cards "Sou Iniciante" e "Já sou Umbandista", que
+    // reaparecem na tela de resultado. Vazio = usa a imagem de origem.
+    // IMPORTANTE: use imagem QUADRADA. O card recorta em 1:1 pelo centro,
+    // então uma imagem deitada perde as laterais e sai descentralizada.
+    PERSONAGEM_INICIANTE: "",
+    PERSONAGEM_UMBANDISTA: "",
+
     // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
     // Aparecem em carrossel embaixo do vídeo, no resultado e na oferta.
     // Com a lista vazia, o bloco simplesmente não aparece.
@@ -434,8 +441,8 @@
   var CHECKOUT_COMPLETO=CFG.CHECKOUT_COMPLETO||"SEU_LINK_COMPLETO";
 
   var IMG={
-    iniciante:A("personagem-iniciante-novo-CPEGKlyv.png"),
-    umbandista:A("personagem-umbandista-novo-CFD7hGAP.png"),
+    iniciante:CFG.PERSONAGEM_INICIANTE||A("personagem-iniciante-novo-CPEGKlyv.png"),
+    umbandista:CFG.PERSONAGEM_UMBANDISTA||A("personagem-umbandista-novo-CFD7hGAP.png"),
     guia:A("personagem-guia-3d-C5LUUTbc.png"),
     orixas:A("option-orixas-BJo4pGll.png"),
     pretovelhos:A("option-preto-velhos-CQh7x9tk.png"),
