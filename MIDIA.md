@@ -5,16 +5,25 @@ Todos os caminhos são configurados no bloco `QUIZ_CONFIG`, no topo do `index.ht
 
 ---
 
-## 1. Arquivos que FALTAM no repositório
+## 1. Arquivos locais ✅
 
-Estes dois são chamados pelo código mas não existem aqui. Precisam ser enviados por você.
+Nada mais falta. Todos os arquivos que o código chama estão no repositório.
 
-| Arquivo | Onde aparece | Situação hoje |
+| Arquivo | Onde aparece | Tamanho |
 |---|---|---|
-| `img/helena.png` | Foto no rodapé, "Conteúdo de Mãe Helena de Oxóssi" | **Ausente** → entra um avatar cinza neutro |
+| `audio/ori-background.mp3` | Música de fundo (botão 🔊 no topo) | 3,3 MB |
+| `video/app-mapa-mental.mp4` | Prévia do app, na tela "promessa" | 8,4 MB |
+| `img/app-mapa-mental-capa.jpg` | Capa do vídeo | 49 KB |
+| `img/helena.jpg` | Foto no rodapé | 15 KB |
+| `img/depoimentos/1..4.jpg` | Carrossel de depoimentos | 159 KB no total |
 
-É o único arquivo que ainda falta. Basta soltá-lo em `img/` com esse nome, ou
-ajustar `FOTO_AUTORA` no `QUIZ_CONFIG` se o nome for outro.
+A foto do rodapé é uma imagem gerada por IA (Google Gemini), recortada em
+quadrado no rosto e reduzida a 200×200, já que é exibida num círculo de 56 px.
+O original enviado tinha 896×1200 e 2,3 MB, e veio duplicado; ficou só a versão
+tratada. Se um dia entrar uma foto real, basta substituir `img/helena.jpg`.
+
+Se o arquivo da foto sumir, o rodapé volta sozinho para um avatar cinza neutro.
+Se o áudio sumir, o botão de música some. Nada quebra a página.
 
 ---
 
@@ -145,9 +154,18 @@ São **4 prints**, já no lugar:
 | `img/depoimentos/3.jpg` | WhatsApp — "Chegou… os bônus estão juntos" |
 | `img/depoimentos/4.jpg` | Instagram — Débora (conversa de pré-venda) |
 
-Chegaram como PNG somando 1,35 MB; convertidos para JPEG ficaram em **292 KB**,
-sem perda visível. As dimensões originais foram mantidas (nenhum passava de
-720 px de largura).
+Chegaram como PNG somando 1,35 MB. Foram convertidos para JPEG, cortados no
+topo e na base para tirar barra de status e barra de digitação, e reduzidos para
+420 px de largura: **1,35 MB → 159 KB**. O corte é contíguo, ou seja, nenhum
+trecho do meio da conversa saiu.
+
+Na página cada print é limitado a 340 px de altura, o que deixa todos os slides
+do mesmo tamanho (~390 px). Antes disso, um slide chegava a 730 px de altura e
+dominava a tela. Quem quiser ler a conversa inteira toca na imagem e ela abre em
+tela cheia; fecha no toque, no × ou com Esc.
+
+O carrossel aparece **uma vez só** antes da oferta, embaixo do vídeo. A tela de
+resultado, que vem logo antes, não repete mais os depoimentos.
 
 Cada item aceita duas formas:
 

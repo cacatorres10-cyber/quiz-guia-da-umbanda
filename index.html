@@ -34,7 +34,7 @@
 
     // Foto do rodapé. Coloque o arquivo em img/ e confira o nome aqui.
     // Se não existir, entra um avatar neutro no lugar.
-    FOTO_AUTORA: "img/helena.png",
+    FOTO_AUTORA: "img/helena.jpg",
 
     // Vídeo de prévia do app, hospedado no próprio projeto (pasta video/).
     VIDEO_APP: "video/app-mapa-mental.mp4",
@@ -334,9 +334,19 @@
   .car-track::-webkit-scrollbar{display:none}
   .car-item{flex:0 0 100%;min-width:0;scroll-snap-align:start}
   .car-item .testi{margin-bottom:0}
+  /* altura fixa deixa todos os slides do mesmo tamanho; o print inteiro
+     abre em tela cheia ao toque, então nada fica ilegível */
   .car-print{background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    overflow:hidden;box-shadow:var(--shadow-sm)}
-  .car-print img{width:100%;display:block}
+    overflow:hidden;box-shadow:var(--shadow-sm);width:fit-content;max-width:100%;
+    margin:0 auto;position:relative;cursor:zoom-in}
+  .car-print img{display:block;max-height:340px;width:auto;max-width:100%}
+  .car-hint{text-align:center;font-size:11px;color:var(--faint);font-weight:700;margin:4px 0 0;opacity:.85}
+  .lbox{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:flex;
+    align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+  .lbox img{max-width:100%;max-height:100%;border-radius:10px;display:block}
+  .lbox-x{position:absolute;top:12px;right:14px;width:38px;height:38px;border-radius:50%;
+    border:none;background:rgba(255,255,255,.18);color:#fff;font-size:19px;font-weight:900;
+    cursor:pointer;line-height:1;padding:0}
   .car-cap{text-align:center;font-size:12.5px;color:var(--faint);font-weight:700;margin:8px 0 0}
   .car-dots{display:flex;gap:7px;justify-content:center;align-items:center;margin-top:11px}
   .car-dot{width:8px;height:8px;padding:0;border:none;border-radius:50%;background:var(--line);
@@ -647,7 +657,8 @@
         inner='<div class="car-print"><img src="'+esc(d.print)+'" loading="lazy"'+
           ' alt="Depoimento de '+esc(d.nome||"aluno")+' em '+esc(d.local||"mensagem")+'"></div>'+
           (d.texto?testiCard(d,true):"")+
-          (d.nome?'<p class="car-cap">'+esc(d.nome)+(d.local?' · '+esc(d.local):'')+'</p>':"");
+          (d.nome?'<p class="car-cap">'+esc(d.nome)+(d.local?' · '+esc(d.local):'')+'</p>':"")+
+          '<p class="car-hint">🔍 toque para ampliar</p>';
       } else {
         inner=testiCard(d,false);
       }
@@ -663,9 +674,31 @@
       '<div class="carousel"><div class="car-track" id="carTrack">'+slides+'</div>'+nav+'</div></div>';
   }
 
+  // print em tela cheia, para quem quiser ler a conversa toda
+  function abrirLightbox(src,alt){
+    var box=document.createElement("div");
+    box.className="lbox";
+    box.innerHTML='<button class="lbox-x" aria-label="Fechar">×</button>'+
+      '<img src="'+esc(src)+'" alt="'+esc(alt)+'">';
+    function fechar(){ if(box.parentNode) box.parentNode.removeChild(box);
+      document.removeEventListener("keydown",aoTeclar); }
+    function aoTeclar(e){ if(e.key==="Escape") fechar(); }
+    box.addEventListener("click",fechar);
+    document.addEventListener("keydown",aoTeclar);
+    document.body.appendChild(box);
+  }
+
   function initCarrossel(){
     var track=document.getElementById("carTrack"); if(!track) return;
     var wrap=track.parentNode;
+
+    [].slice.call(track.querySelectorAll(".car-print")).forEach(function(pr){
+      pr.addEventListener("click",function(e){
+        e.stopPropagation();
+        var im=pr.querySelector("img"); if(!im) return;
+        abrirLightbox(im.getAttribute("src"), im.getAttribute("alt")||"");
+      });
+    });
 
     // print que não carrega dá lugar ao depoimento em texto
     [].slice.call(track.querySelectorAll(".car-print img")).forEach(function(im){
@@ -673,7 +706,8 @@
         var item=im.closest(".car-item"); if(!item) return;
         var pr=item.querySelector(".car-print"), tx=item.querySelector(".testi");
         if(pr) pr.style.display="none";
-        var cap=item.querySelector(".car-cap");
+        var cap=item.querySelector(".car-cap"), hint=item.querySelector(".car-hint");
+        if(hint) hint.style.display="none";
         if(tx){ tx.style.display=""; if(cap) cap.style.display="none"; }
         else item.style.display="none";
       }
@@ -863,11 +897,10 @@
       '<p class="lead">'+state.tier.d+'</p>'+
       mirrorText()+
       diagnostico()+
-      proof("Quem já está estudando com o material")+
+      // sem depoimentos aqui: eles aparecem na tela seguinte, embaixo do vídeo
       guideLine("Preparei o caminho ideal para o seu perfil...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero chegar ao próximo nível <span aria-hidden="true">→</span></button>'+
       '</div>';
-    initCarrossel();
     var target=state.displayScore;
     var ring=document.getElementById("ring");
     var numEl=document.getElementById("scoreNum");
