@@ -38,12 +38,19 @@
     VIDEO_APP: "video/app-mapa-mental.mp4",
     VIDEO_APP_POSTER: "img/app-mapa-mental-capa.jpg",
 
-    // Personagens dos cards "Sou Iniciante" e "Já sou Umbandista", que
-    // reaparecem na tela de resultado. Vazio = usa a imagem de origem.
-    // IMPORTANTE: use imagem QUADRADA. O card recorta em 1:1 pelo centro,
-    // então uma imagem deitada perde as laterais e sai descentralizada.
-    PERSONAGEM_INICIANTE: "img/iniciante.jpg",
-    PERSONAGEM_UMBANDISTA: "img/umbandista.jpg",
+    // ---- IMAGENS DO QUIZ ----------------------------------------------
+    // Cada chave aqui troca uma imagem por um arquivo seu. O que não
+    // estiver listado continua vindo de ASSET_BASE.
+    // Para trocar: suba o arquivo em img/ e acrescente a linha da chave.
+    // A lista completa de chaves está em MIDIA.md.
+    //
+    // Nos cards de "Iniciante" e "Umbandista" use imagem QUADRADA: o card
+    // recorta em 1:1 pelo centro, e uma imagem deitada perde as laterais.
+    IMAGENS: {
+      iniciante:  "img/iniciante.jpg",
+      umbandista: "img/umbandista.jpg"
+      // q_entidades: "img/perguntas/entidades.jpg",
+    },
 
     // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
     // Aparecem em carrossel embaixo do vídeo, no resultado e na oferta.
@@ -440,29 +447,38 @@
   var CHECKOUT=CFG.CHECKOUT||"SEU_LINK_DE_AFILIADO";
   var CHECKOUT_COMPLETO=CFG.CHECKOUT_COMPLETO||"SEU_LINK_COMPLETO";
 
-  var IMG={
-    iniciante:CFG.PERSONAGEM_INICIANTE||A("personagem-iniciante-novo-CPEGKlyv.png"),
-    umbandista:CFG.PERSONAGEM_UMBANDISTA||A("personagem-umbandista-novo-CFD7hGAP.png"),
-    guia:A("personagem-guia-3d-C5LUUTbc.png"),
-    orixas:A("option-orixas-BJo4pGll.png"),
-    pretovelhos:A("option-preto-velhos-CQh7x9tk.png"),
-    caridade:A("option-caridade-CVJE28jO.png"),
-    sim:A("result-option-sim-CeTr9lC_.png"),
-    talvez:A("option-talvez-DPJvBUqf.png"),
-    incerteza:A("option-incerteza-BRhgOzPW.png"),
-    q_entidades:A("question-entidades-DMFtjsZs.png"),
-    q_pontos:A("question-pontos-riscados-DSbgj6ry.png"),
-    q_dificuldades:A("question-dificuldades-Dl1jNYxa.gif"),
-    q_app:A("question-aplicativo-DY88zYaI.png"),
-    q_orixas:A("question-orixas-CFli7e6m.png"),
-    q_rituais:A("question-rituais-CbJQp2Lx.png"),
-    q_altar:A("question-altar-CvW1ySTd.png"),
-    q_elementos:A("question-elementos-DQvYZev0.png"),
-    b1:A("bonus-1-C8Q0zK5Z.png"), b2:A("bonus-2-C4A5njPY.png"),
-    b3:A("bonus-3-Cm0f-TZ4.png"), b4:A("bonus-4-Be6u0da-.png"),
-    b6mais:A("bonus-6-mais-B82pbZGs.png"),
-    mockup:A("super-mockup-oferta-ZDvK5T8y.png")
+  // Arquivo de origem de cada imagem, dentro de ASSET_BASE.
+  var IMG_ORIGEM={
+    iniciante:"personagem-iniciante-novo-CPEGKlyv.png",
+    umbandista:"personagem-umbandista-novo-CFD7hGAP.png",
+    guia:"personagem-guia-3d-C5LUUTbc.png",
+    orixas:"option-orixas-BJo4pGll.png",
+    pretovelhos:"option-preto-velhos-CQh7x9tk.png",
+    caridade:"option-caridade-CVJE28jO.png",
+    sim:"result-option-sim-CeTr9lC_.png",
+    talvez:"option-talvez-DPJvBUqf.png",
+    incerteza:"option-incerteza-BRhgOzPW.png",
+    q_entidades:"question-entidades-DMFtjsZs.png",
+    q_pontos:"question-pontos-riscados-DSbgj6ry.png",
+    q_dificuldades:"question-dificuldades-Dl1jNYxa.gif",
+    q_app:"question-aplicativo-DY88zYaI.png",
+    q_orixas:"question-orixas-CFli7e6m.png",
+    q_rituais:"question-rituais-CbJQp2Lx.png",
+    q_altar:"question-altar-CvW1ySTd.png",
+    q_elementos:"question-elementos-DQvYZev0.png",
+    b1:"bonus-1-C8Q0zK5Z.png", b2:"bonus-2-C4A5njPY.png",
+    b3:"bonus-3-Cm0f-TZ4.png", b4:"bonus-4-Be6u0da-.png",
+    b6mais:"bonus-6-mais-B82pbZGs.png",
+    mockup:"super-mockup-oferta-ZDvK5T8y.png"
   };
+  // QUIZ_CONFIG.IMAGENS troca qualquer uma dessas por um arquivo local.
+  var TROCAS=CFG.IMAGENS||{};
+  var IMG={};
+  for(var _k in IMG_ORIGEM){
+    if(Object.prototype.hasOwnProperty.call(IMG_ORIGEM,_k)){
+      IMG[_k]=TROCAS[_k]||A(IMG_ORIGEM[_k]);
+    }
+  }
   // Prévia do app: arquivo hospedado no próprio projeto (pasta video/).
   // Só é baixado quando a pessoa clica no play.
   var VID_APP={ file:CFG.VIDEO_APP||"video/app-mapa-mental.mp4",
@@ -491,7 +507,7 @@
       ]
     },
     { id:"entidades", kind:"scale", img:IMG.q_entidades,
-      q:"Você conhece as principais entidades que trabalham nos terreiros?",
+      q:"Você conhece os Orixás e as entidades que trabalham nos terreiros?",
       opts:[{t:"Sim, todas!",w:3},{t:"Conheço algumas.",w:2},{t:"Ainda estou aprendendo.",w:1},{t:"Não conheço nenhuma!",w:0}]
     },
     { id:"pontos", kind:"knowledge", img:IMG.q_pontos,

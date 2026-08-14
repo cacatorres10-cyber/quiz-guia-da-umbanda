@@ -72,6 +72,26 @@ no `QUIZ_CONFIG`:
 ASSET_BASE: "img/",
 ```
 
+### Trocar uma imagem por vez
+
+Não precisa migrar tudo de uma vez. O `QUIZ_CONFIG` tem um bloco `IMAGENS` onde
+cada chave substitui uma única imagem:
+
+```js
+IMAGENS: {
+  iniciante:  "img/iniciante.jpg",
+  umbandista: "img/umbandista.jpg",
+  q_entidades: "img/perguntas/entidades.jpg"
+},
+```
+
+O que não estiver listado ali continua vindo de `ASSET_BASE`. As chaves são as
+da coluna esquerda das tabelas abaixo (`iniciante`, `q_pontos`, `b1`, `mockup`…).
+
+Os cards de "Iniciante" e "Umbandista" recortam em 1:1, então para eles a
+imagem precisa ser **quadrada**. As imagens de pergunta não são recortadas:
+aparecem com no máximo 240 px de largura, mantendo a proporção do arquivo.
+
 ### Em uso no fluxo atual
 
 | Arquivo | Onde aparece |
