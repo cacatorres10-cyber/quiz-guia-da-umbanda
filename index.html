@@ -33,10 +33,31 @@
     // Se não existir, entra um avatar neutro no lugar.
     FOTO_AUTORA: "img/helena.png",
 
+    // Vídeo de prévia do app, hospedado no próprio projeto (pasta video/).
+    VIDEO_APP: "video/app-mapa-mental.mp4",
+    VIDEO_APP_POSTER: "img/app-mapa-mental-capa.jpg",
+
     // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
-    // Enquanto a lista estiver vazia, o bloco de depoimentos não aparece na página.
-    // Formato: { texto:"...", nome:"Maria S.", local:"Salvador/BA", foto:"URL da foto (opcional)" }
-    DEPOIMENTOS: []
+    // Aparecem em carrossel embaixo do vídeo, no resultado e na oferta.
+    // Com a lista vazia, o bloco simplesmente não aparece.
+    //
+    // Cada item aceita dois formatos:
+    //   1) print da conversa (recomendado, prova mais forte):
+    //      { print:"img/depoimentos/1.png", nome:"Quem enviou", local:"Instagram" }
+    //   2) texto:
+    //      { texto:"...", nome:"Maria S.", local:"Salvador/BA", foto:"(opcional)" }
+    // Se o item tiver "print", a imagem é usada e o texto vira alt/legenda.
+    DEPOIMENTOS: [
+      { print:"img/depoimentos/1.png",
+        texto:"Que material lindo! Trabalho incrível que vocês estão fazendo, gratidão demais. Axé ❤️",
+        nome:"Colorindo com Jesus", local:"Instagram · @ceucomcores" },
+      { print:"img/depoimentos/2.png",
+        texto:"Esse aplicativo é surreal! Muito bom mesmo, tem tudo explicado, com mapas e aulas 😍 Todos os bônus chegaram na mesma hora, no meu e-mail.",
+        nome:"Aluno do app", local:"Instagram" },
+      { print:"img/depoimentos/3.png",
+        texto:"Chegou… os bônus estão juntos. Vou ver à noite, quero aprender tudo de umbanda.",
+        nome:"Aluno do app", local:"WhatsApp" }
+    ]
   };
   (function(){ var id=window.QUIZ_CONFIG.FB_PIXEL_ID; if(!id) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -298,6 +319,30 @@
   .testi .who b{font-size:14px;color:var(--ink)}
   .testi .who small{display:block;font-size:12px;color:var(--faint);font-weight:600}
 
+  /* ---- carrossel de depoimentos ---- */
+  .carousel{position:relative}
+  .car-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+  .car-track::-webkit-scrollbar{display:none}
+  .car-item{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+  .car-item .testi{margin-bottom:0}
+  .car-print{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;box-shadow:var(--shadow-sm)}
+  .car-print img{width:100%;display:block}
+  .car-cap{text-align:center;font-size:12.5px;color:var(--faint);font-weight:700;margin:8px 0 0}
+  .car-dots{display:flex;gap:7px;justify-content:center;align-items:center;margin-top:11px}
+  .car-dot{width:8px;height:8px;padding:0;border:none;border-radius:50%;background:var(--line);
+    cursor:pointer;transition:background .2s,transform .2s}
+  .car-dot.on{background:var(--coral);transform:scale(1.3)}
+  .car-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;
+    border:1px solid var(--line);background:rgba(255,255,255,.94);color:var(--ink-soft);cursor:pointer;
+    display:none;align-items:center;justify-content:center;font-size:16px;font-weight:900;line-height:1;
+    box-shadow:var(--shadow-sm);z-index:2;padding:0}
+  .car-arrow:hover{color:var(--coral);border-color:var(--coral)}
+  .car-arrow[disabled]{opacity:.3;cursor:default}
+  .car-prev{left:-6px} .car-next{right:-6px}
+  @media (hover:hover) and (min-width:420px){ .car-arrow{display:flex} }
+
   .secure-img{width:100%;max-width:360px;display:block;margin:14px auto 0}
   footer{margin-top:18px;text-align:center}
   footer img{max-width:100%}
@@ -390,19 +435,32 @@
     preco:"https://quizsarava.lovable.app/__l5e/assets-v1/042e462b-9f87-428e-bccd-53438d427811/preco-1990.png",
     secure:"https://quizsarava.lovable.app/__l5e/assets-v1/38505c1d-d952-4d16-9eb9-7f75af2eacd5/wiapy-secure-checkout.png"
   };
-  // vídeos do Vimeo (proporção real de cada um)
-  var VID_APP={id:"1180197671", ratio:"196/426", cap:"Prévia do Aplicativo", thumb:"https://i.vimeocdn.com/video/2142250322-e31f4a7adfd3b850c7a2caa0c008fcf0f9723c0fcdcd69008d957ca051f0e0c7-d_640?region=us"};
+  // Prévia do app: arquivo hospedado no próprio projeto (pasta video/).
+  // O vídeo só é baixado quando a pessoa clica no play, igual à fachada do Vimeo.
+  var VID_APP={ file:CFG.VIDEO_APP||"video/app-mapa-mental.mp4",
+                poster:CFG.VIDEO_APP_POSTER||"img/app-mapa-mental-capa.jpg",
+                ratio:"1034/1920", cap:"Prévia do Aplicativo" };
+  // Vídeo do Vimeo (proporção real)
   var VID_IMP={id:"1180197942", ratio:"240/426", cap:"Versão impressa e encadernada", thumb:"https://i.vimeocdn.com/video/2142250564-c03bcbbeb4b839b26ca7055d733aa62a2c249426821422dea254181134412503-d_640?region=us"};
 
   var CHEV='<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>';
   function imgTag(src,cls,alt){return '<img class="'+(cls||'')+'" src="'+src+'" alt="'+(alt||'')+'" onerror="this.style.display=\'none\'">';}
   function videoBox(v){
+    var attr, capa, link;
+    if(v.file){            // arquivo local
+      attr='data-src="'+v.file+'" data-poster="'+v.poster+'"';
+      capa=v.poster; link='';
+    } else {               // Vimeo
+      attr='data-vid="'+v.id+'"';
+      capa=v.thumb;
+      link=' · <a href="https://vimeo.com/'+v.id+'" target="_blank" rel="noopener">abrir vídeo</a>';
+    }
     return '<div class="videobox" style="aspect-ratio:'+v.ratio+'">'+
-      '<button class="vfacade" data-vid="'+v.id+'" aria-label="Reproduzir '+v.cap+'">'+
-        '<img src="'+v.thumb+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
+      '<button class="vfacade" '+attr+' aria-label="Reproduzir '+v.cap+'">'+
+        '<img src="'+capa+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
         '<span class="vplay">▶</span>'+
       '</button></div>'+
-      '<p class="video-cap">▶ '+v.cap+' · <a href="https://vimeo.com/'+v.id+'" target="_blank" rel="noopener">abrir vídeo</a></p>';
+      '<p class="video-cap">▶ '+v.cap+link+'</p>';
   }
 
   var Q=[
@@ -559,16 +617,90 @@
     return '<div class="guide">'+imgTag(IMG.guia,"","Pai Oxalá")+
       '<span class="g">✨ '+txt+'</span><span class="dot"></span></div>';
   }
-  // Depoimentos: só aparecem se você cadastrar depoimentos REAIS em QUIZ_CONFIG.DEPOIMENTOS
+  function esc(s){ return String(s==null?"":s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  // Depoimentos: só aparecem se você cadastrar depoimentos REAIS em QUIZ_CONFIG.DEPOIMENTOS.
+  // Item com "print" mostra a captura da conversa; sem print (ou se a imagem não
+  // carregar) cai para o depoimento em texto. Sempre em carrossel.
+  function testiCard(d,hidden){
+    var av=d.foto?('<img class="av" src="'+esc(d.foto)+'" alt="">'):'<span class="av">👤</span>';
+    return '<div class="testi"'+(hidden?' style="display:none"':'')+'>'+
+      '<div class="stars">⭐⭐⭐⭐⭐</div><p>“'+esc(d.texto)+'”</p>'+
+      '<div class="who">'+av+'<div><b>'+esc(d.nome)+'</b><small>'+esc(d.local)+'</small></div></div></div>';
+  }
   function proof(label){
     var list=(CFG.DEPOIMENTOS)||[];
     if(!list.length) return "";
-    return '<div class="proof-wrap"><div class="proof-lbl">'+label+'</div>'+
-      list.map(function(d){
-        var av=d.foto?('<img class="av" src="'+d.foto+'" alt="">'):'<span class="av">👤</span>';
-        return '<div class="testi"><div class="stars">⭐⭐⭐⭐⭐</div><p>“'+d.texto+'”</p>'+
-          '<div class="who">'+av+'<div><b>'+(d.nome||'')+'</b><small>'+(d.local||'')+'</small></div></div></div>';
-      }).join("")+'</div>';
+    var slides=list.map(function(d){
+      var inner;
+      if(d.print){
+        inner='<div class="car-print"><img src="'+esc(d.print)+'" loading="lazy"'+
+          ' alt="Depoimento de '+esc(d.nome||"aluno")+' em '+esc(d.local||"mensagem")+'"></div>'+
+          (d.texto?testiCard(d,true):"")+
+          (d.nome?'<p class="car-cap">'+esc(d.nome)+(d.local?' · '+esc(d.local):'')+'</p>':"");
+      } else {
+        inner=testiCard(d,false);
+      }
+      return '<div class="car-item">'+inner+'</div>';
+    }).join("");
+    var nav = list.length>1 ?
+      '<button class="car-arrow car-prev" data-car="-1" aria-label="Depoimento anterior">‹</button>'+
+      '<button class="car-arrow car-next" data-car="1" aria-label="Próximo depoimento">›</button>'+
+      '<div class="car-dots">'+list.map(function(d,i){
+        return '<button class="car-dot'+(i?'':' on')+'" data-dot="'+i+'" aria-label="Depoimento '+(i+1)+'"></button>';
+      }).join("")+'</div>' : "";
+    return '<div class="proof-wrap"><div class="proof-lbl">'+esc(label)+'</div>'+
+      '<div class="carousel"><div class="car-track" id="carTrack">'+slides+'</div>'+nav+'</div></div>';
+  }
+
+  function initCarrossel(){
+    var track=document.getElementById("carTrack"); if(!track) return;
+    var wrap=track.parentNode;
+
+    // print que não carrega dá lugar ao depoimento em texto
+    [].slice.call(track.querySelectorAll(".car-print img")).forEach(function(im){
+      function fail(){
+        var item=im.closest(".car-item"); if(!item) return;
+        var pr=item.querySelector(".car-print"), tx=item.querySelector(".testi");
+        if(pr) pr.style.display="none";
+        var cap=item.querySelector(".car-cap");
+        if(tx){ tx.style.display=""; if(cap) cap.style.display="none"; }
+        else item.style.display="none";
+      }
+      im.addEventListener("error", fail);
+      if(im.complete && im.naturalWidth===0) fail();
+    });
+
+    var dots=[].slice.call(wrap.querySelectorAll(".car-dot"));
+    var arrows=[].slice.call(wrap.querySelectorAll(".car-arrow"));
+    if(!dots.length) return;
+    var n=track.children.length;
+    function step(){ return track.clientWidth+10; }           // largura do slide + gap
+    function atual(){ return Math.max(0,Math.min(n-1,Math.round(track.scrollLeft/step()))); }
+    function sync(){
+      var i=atual();
+      dots.forEach(function(dt,k){ dt.classList.toggle("on",k===i); });
+      arrows.forEach(function(a){
+        var dir=parseInt(a.getAttribute("data-car"),10);
+        a.disabled = (dir<0 && i===0) || (dir>0 && i===n-1);
+      });
+    }
+    function irPara(i){
+      i=Math.max(0,Math.min(n-1,i));
+      track.scrollTo({left:i*step(), behavior:"smooth"});
+    }
+    var t=null;
+    track.addEventListener("scroll",function(){
+      if(t) clearTimeout(t);
+      t=setTimeout(sync,80);
+    },{passive:true});
+    dots.forEach(function(dt){ dt.addEventListener("click",function(e){
+      e.stopPropagation(); irPara(parseInt(dt.getAttribute("data-dot"),10)); }); });
+    arrows.forEach(function(a){ a.addEventListener("click",function(e){
+      e.stopPropagation(); irPara(atual()+parseInt(a.getAttribute("data-car"),10)); }); });
+    window.addEventListener("resize",sync,{passive:true});
+    sync();
   }
 
   function render(){
@@ -595,6 +727,7 @@
       '<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Veja como é o <b>app por dentro</b>:</p>'+
       '<div class="promo-video" style="max-width:300px;margin:0 auto 6px">'+videoBox(VID_APP)+'</div>'+
       '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso é só uma <b>pequena amostra</b>. Por dentro, o app tem muito mais.</p>'+
+      proof("Quem já está estudando com o material")+
       '<div class="card" style="text-align:left">'+
         '<p style="margin:0 0 10px">Abrindo o Mapa e entendendo cada fundamento com <b>clareza</b>: os Orixás, os guias, os rituais, sem se perder no meio de tanta informação.</p>'+
         '<p style="margin:0 0 10px">Estudando no seu tempo, <b>guiado(a) passo a passo</b>, como quem tem um mestre ao lado.</p>'+
@@ -607,6 +740,7 @@
       guideLine("É essa a caminhada que preparei pra você...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar essa caminhada <span aria-hidden="true">→</span></button>'+
     '</div>';
+    initCarrossel();
   }
 
   function intro(){
@@ -724,6 +858,7 @@
       guideLine("Preparei o caminho ideal para o seu perfil...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero chegar ao próximo nível <span aria-hidden="true">→</span></button>'+
       '</div>';
+    initCarrossel();
     var target=state.displayScore;
     var ring=document.getElementById("ring");
     var numEl=document.getElementById("scoreNum");
@@ -810,6 +945,7 @@
       guideLine("Veja a sua oferta de hoje...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Ver a minha oferta! <span aria-hidden="true">→</span></button>'+
       '</div>';
+    initCarrossel();
   }
 
   function stackRow(s){
@@ -868,6 +1004,7 @@
       '<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
       proof("O que dizem os alunos")+
       '</div>';
+    initCarrossel();
     startClock();
   }
 
@@ -889,8 +1026,16 @@
     var fac=e.target.closest(".vfacade");
     if(fac){
       if(bgm){ bgm.pause(); musicOn=false; updateMusicIcon(); } // pausa a musica de fundo p/ o video ter o som limpo
-      var box=fac.closest(".videobox"); var id=fac.getAttribute("data-vid");
-      box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      var box=fac.closest(".videobox");
+      var src=fac.getAttribute("data-src");
+      if(src){   // arquivo local: so agora o mp4 comeca a ser baixado
+        box.innerHTML='<video src="'+esc(src)+'" poster="'+esc(fac.getAttribute("data-poster")||"")+'"'+
+          ' controls autoplay playsinline preload="auto"'+
+          ' style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0c0c14"></video>';
+      } else {   // Vimeo
+        var id=fac.getAttribute("data-vid");
+        box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      }
       return;
     }
     startMusic();

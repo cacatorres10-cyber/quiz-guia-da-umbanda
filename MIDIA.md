@@ -13,9 +13,13 @@ Estes dois são chamados pelo código mas não existem aqui. Precisam ser enviad
 |---|---|---|
 | `audio/ori-background.mp3` | Música de fundo (botão 🔊 no topo) | **Ausente** → o botão de música some sozinho |
 | `img/helena.png` | Foto no rodapé, "Conteúdo de Mãe Helena de Oxóssi" | **Ausente** → entra um avatar cinza neutro |
+| `img/depoimentos/1.png` | Carrossel — print do Instagram (@ceucomcores) | **Ausente** → slide cai para o texto |
+| `img/depoimentos/2.png` | Carrossel — print do Instagram ("surreal!") | **Ausente** → slide cai para o texto |
+| `img/depoimentos/3.png` | Carrossel — print do WhatsApp (bônus) | **Ausente** → slide cai para o texto |
 
-Basta soltar os arquivos nas pastas `audio/` e `img/` com esses nomes exatos.
-Se preferir outro nome, ajuste `MUSICA` e `FOTO_AUTORA` no `QUIZ_CONFIG`.
+Basta soltar os arquivos nas pastas `audio/`, `img/` e `img/depoimentos/` com
+esses nomes exatos. Se preferir outro nome, ajuste `MUSICA`, `FOTO_AUTORA` ou
+`DEPOIMENTOS` no `QUIZ_CONFIG`.
 
 Sobre a música: use uma faixa que você tenha direito de usar (própria, comprada
 ou de banco livre de royalties). Ponto de atabaque gravado em terreiro sem
@@ -85,17 +89,49 @@ Também há duas imagens declaradas em `IMG` que **nenhuma tela usa**:
 
 ---
 
-## 3. Vídeos (Vimeo)
+## 3. Vídeos
 
-| Vídeo | ID | Onde aparece |
+| Vídeo | Origem | Onde aparece |
 |---|---|---|
-| Prévia do Aplicativo | `1180197671` | Tela "promessa" — **em uso** |
-| Versão impressa e encadernada | `1180197942` | Tela "delivery" — **fora do fluxo, nunca aparece** |
+| Prévia do Aplicativo | `video/app-mapa-mental.mp4` (local) | Tela "promessa" — **em uso** |
+| Versão impressa e encadernada | Vimeo `1180197942` | Tela "delivery" — **fora do fluxo, nunca aparece** |
 
-Os vídeos carregam por fachada: mostra a miniatura e só carrega o player do
-Vimeo depois do clique (bom para velocidade). A miniatura vem do
-`i.vimeocdn.com`; se o link expirar, agora o box fica escuro com o botão ▶ em
-vez de mostrar ícone de imagem quebrada.
+A prévia do app é hospedada no próprio projeto. O arquivo original tinha 23 MB,
+1034×1920, com o átomo `moov` no fim (o navegador teria que baixar tudo antes de
+começar a tocar). A versão publicada tem **8,4 MB**, 640×1188, 24 fps, com
+`+faststart`, e o texto continua legível porque o vídeo é exibido num box de
+~290 px de largura.
+
+Os dois carregam por fachada: mostra a capa e só baixa o vídeo depois do clique.
+A capa da prévia é `img/app-mapa-mental-capa.jpg`, extraída do próprio vídeo.
+
+Para trocar o vídeo depois, substitua o arquivo em `video/` e gere uma capa
+nova, ou ajuste `VIDEO_APP` e `VIDEO_APP_POSTER` no `QUIZ_CONFIG`.
+
+**Atenção com a banda da Vercel:** cada play baixa ~8,4 MB. No plano Hobby o
+limite é 100 GB/mês, o que dá por volta de 12 mil plays. Se a página escalar,
+vale mover o vídeo para o Vimeo ou para um CDN.
+
+---
+
+## 3b. Depoimentos (carrossel)
+
+Ficam logo abaixo do vídeo na tela "promessa", e também no resultado e na
+oferta. São configurados em `DEPOIMENTOS`, no `QUIZ_CONFIG`.
+
+Cada item aceita duas formas:
+
+- `print:"img/depoimentos/1.png"` → mostra a captura da conversa;
+- `texto:"..."` → mostra um card com aspas, estrelas e assinatura.
+
+Quando o item tem os dois, o print manda; se a imagem não carregar, o slide cai
+sozinho para o texto. É por isso que o carrossel já funciona hoje, mesmo sem os
+prints terem sido enviados.
+
+O carrossel é feito com scroll-snap nativo: arrasta no celular, tem bolinhas
+para navegar e setas no desktop. Sem biblioteca externa.
+
+Detalhes de privacidade e autorização estão em `img/depoimentos/README.md`.
 
 ---
 
