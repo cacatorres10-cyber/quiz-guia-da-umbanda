@@ -1,26 +1,31 @@
 # img/depoimentos/
 
-Capturas de tela das conversas que aparecem no carrossel de depoimentos,
-logo abaixo do vídeo de prévia do app.
-
-Nomes esperados pelo código (definidos em `DEPOIMENTOS`, no `QUIZ_CONFIG`):
+Capturas das conversas que aparecem no carrossel de depoimentos, logo abaixo do
+vídeo de prévia do app, e também no resultado e na oferta.
 
 | Arquivo | Conversa |
 |---|---|
-| `1.png` | Instagram — Colorindo com Jesus (@ceucomcores) |
-| `2.png` | Instagram — "Esse aplicativo é surreal!" |
-| `3.png` | WhatsApp — "Chegou… os bônus estão juntos" |
+| `1.jpg` | Instagram — Colorindo com Jesus (@ceucomcores) |
+| `2.jpg` | Instagram — "Esse aplicativo é surreal!" + bônus no e-mail |
+| `3.jpg` | WhatsApp — "Chegou… os bônus estão juntos" |
+| `4.jpg` | Instagram — Débora (conversa de pré-venda) |
 
-Enquanto um arquivo não existir, aquele slide mostra o depoimento em **texto**,
-que já está cadastrado no `QUIZ_CONFIG`. Ou seja: o carrossel funciona desde já,
-e melhora sozinho quando você subir os prints.
+A ordem de exibição é a do array `DEPOIMENTOS`, no `QUIZ_CONFIG`. Para trocar a
+ordem, reordene lá; para trocar uma imagem, substitua o arquivo mantendo o nome.
 
-## Antes de subir os prints
+## Para acrescentar um depoimento
 
-- **Apague dados pessoais.** Telefone, sobrenome e foto de perfil de quem não
-  autorizou aparecer. O print do WhatsApp tem o número visível no topo — corte
-  ou borre essa faixa.
-- **Peça autorização** a quem escreveu. Depoimento precisa ser real e
-  autorizado; é exigência do Código de Defesa do Consumidor e do CONAR.
-- Formato: PNG ou JPG, largura de 600 a 900 px já basta. Corte a barra de
-  status do celular (relógio, bateria) para o print ficar mais limpo.
+Suba a imagem aqui e adicione uma entrada em `DEPOIMENTOS`:
+
+```js
+{ print:"img/depoimentos/5.jpg", texto:"texto de reserva", nome:"Quem enviou", local:"Instagram" }
+```
+
+O `texto` é opcional e só aparece se a imagem não carregar. Use quando a
+conversa tiver um elogio de verdade; sem isso, deixe só o `print`.
+
+Recomendações: JPEG, largura de 480 a 720 px, abaixo de ~100 KB cada. Vale
+cortar a barra de status do celular para o print ficar mais limpo.
+
+Depoimento precisa ser real e autorizado por quem escreveu — exigência do
+Código de Defesa do Consumidor e do CONAR.

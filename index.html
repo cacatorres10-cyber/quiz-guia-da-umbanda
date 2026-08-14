@@ -51,15 +51,20 @@
     //      { texto:"...", nome:"Maria S.", local:"Salvador/BA", foto:"(opcional)" }
     // Se o item tiver "print", a imagem é usada e o texto vira alt/legenda.
     DEPOIMENTOS: [
-      { print:"img/depoimentos/1.png",
+      { print:"img/depoimentos/1.jpg",
         texto:"Que material lindo! Trabalho incrível que vocês estão fazendo, gratidão demais. Axé ❤️",
         nome:"Colorindo com Jesus", local:"Instagram · @ceucomcores" },
-      { print:"img/depoimentos/2.png",
+      { print:"img/depoimentos/2.jpg",
         texto:"Esse aplicativo é surreal! Muito bom mesmo, tem tudo explicado, com mapas e aulas 😍 Todos os bônus chegaram na mesma hora, no meu e-mail.",
         nome:"Aluno do app", local:"Instagram" },
-      { print:"img/depoimentos/3.png",
+      { print:"img/depoimentos/3.jpg",
         texto:"Chegou… os bônus estão juntos. Vou ver à noite, quero aprender tudo de umbanda.",
-        nome:"Aluno do app", local:"WhatsApp" }
+        nome:"Aluno do app", local:"WhatsApp" },
+      // Conversa de pré-venda: sem texto de reserva de propósito, porque as
+      // falas dela são perguntas, não elogio. Se o print não carregar, o
+      // slide some em vez de virar um card de depoimento sem depoimento.
+      { print:"img/depoimentos/4.jpg",
+        nome:"Débora", local:"Instagram" }
     ]
   };
   (function(){ var id=window.QUIZ_CONFIG.FB_PIXEL_ID; if(!id) return;

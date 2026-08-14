@@ -12,13 +12,9 @@ Estes dois são chamados pelo código mas não existem aqui. Precisam ser enviad
 | Arquivo | Onde aparece | Situação hoje |
 |---|---|---|
 | `img/helena.png` | Foto no rodapé, "Conteúdo de Mãe Helena de Oxóssi" | **Ausente** → entra um avatar cinza neutro |
-| `img/depoimentos/1.png` | Carrossel — print do Instagram (@ceucomcores) | **Ausente** → slide cai para o texto |
-| `img/depoimentos/2.png` | Carrossel — print do Instagram ("surreal!") | **Ausente** → slide cai para o texto |
-| `img/depoimentos/3.png` | Carrossel — print do WhatsApp (bônus) | **Ausente** → slide cai para o texto |
 
-Basta soltar os arquivos nas pastas `img/` e `img/depoimentos/` com esses nomes
-exatos. Se preferir outro nome, ajuste `FOTO_AUTORA` ou `DEPOIMENTOS` no
-`QUIZ_CONFIG`.
+É o único arquivo que ainda falta. Basta soltá-lo em `img/` com esse nome, ou
+ajustar `FOTO_AUTORA` no `QUIZ_CONFIG` se o nome for outro.
 
 ---
 
@@ -140,14 +136,29 @@ vale mover o vídeo para o Vimeo ou para um CDN.
 Ficam logo abaixo do vídeo na tela "promessa", e também no resultado e na
 oferta. São configurados em `DEPOIMENTOS`, no `QUIZ_CONFIG`.
 
+São **4 prints**, já no lugar:
+
+| Arquivo | Conversa |
+|---|---|
+| `img/depoimentos/1.jpg` | Instagram — Colorindo com Jesus (@ceucomcores) |
+| `img/depoimentos/2.jpg` | Instagram — "Esse aplicativo é surreal!" + bônus no e-mail |
+| `img/depoimentos/3.jpg` | WhatsApp — "Chegou… os bônus estão juntos" |
+| `img/depoimentos/4.jpg` | Instagram — Débora (conversa de pré-venda) |
+
+Chegaram como PNG somando 1,35 MB; convertidos para JPEG ficaram em **292 KB**,
+sem perda visível. As dimensões originais foram mantidas (nenhum passava de
+720 px de largura).
+
 Cada item aceita duas formas:
 
-- `print:"img/depoimentos/1.png"` → mostra a captura da conversa;
+- `print:"img/depoimentos/1.jpg"` → mostra a captura da conversa;
 - `texto:"..."` → mostra um card com aspas, estrelas e assinatura.
 
 Quando o item tem os dois, o print manda; se a imagem não carregar, o slide cai
-sozinho para o texto. É por isso que o carrossel já funciona hoje, mesmo sem os
-prints terem sido enviados.
+sozinho para o texto. Os três primeiros têm texto de reserva. O quarto não tem
+de propósito: as falas dela são perguntas de pré-venda, não elogio, então um
+card de depoimento com cinco estrelas não faria sentido — se aquele print não
+carregar, o slide simplesmente some.
 
 O carrossel é feito com scroll-snap nativo: arrasta no celular, tem bolinhas
 para navegar e setas no desktop. Sem biblioteca externa.
