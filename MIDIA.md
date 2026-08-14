@@ -129,7 +129,13 @@ começar a tocar). A versão publicada tem **8,4 MB**, 640×1188, 24 fps, com
 ~290 px de largura.
 
 Os dois carregam por fachada: mostra a capa e só baixa o vídeo depois do clique.
-A capa da prévia é `img/app-mapa-mental-capa.jpg`, extraída do próprio vídeo.
+A capa da prévia é `img/app-mapa-mental-capa.jpg`, extraída do próprio vídeo aos
+5,6 s — a tela de abertura do Mapa.
+
+A primeira capa escolhida vinha dos 0,5 s e mostrava "44 aulas em **6** módulos"
+duas vezes, contradizendo os 7 módulos anunciados na oferta. Como era uma imagem
+parada, aparecia antes mesmo de alguém dar play. O vídeo em si ainda mostra
+"6 módulos" mais adiante; corrigir isso exige regravar a prévia.
 
 Para trocar o vídeo depois, substitua o arquivo em `video/` e gere uma capa
 nova, ou ajuste `VIDEO_APP` e `VIDEO_APP_POSTER` no `QUIZ_CONFIG`.
