@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mapa Mental da Umbanda, teste o seu conhecimento</title>
-<link rel="preconnect" href="https://quizsarava.lovable.app" crossorigin>
-<link rel="dns-prefetch" href="https://quizsarava.lovable.app">
 
 <!-- ====================================================================
      CONFIGURAÇÃO DO AFILIADO, troque os valores abaixo antes de publicar
@@ -96,8 +94,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://quizsarava.lovable.app">
-<link rel="dns-prefetch" href="https://player.vimeo.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -458,36 +454,24 @@
     b1:A("bonus-1-C8Q0zK5Z.png"), b2:A("bonus-2-C4A5njPY.png"),
     b3:A("bonus-3-Cm0f-TZ4.png"), b4:A("bonus-4-Be6u0da-.png"),
     b6mais:A("bonus-6-mais-B82pbZGs.png"),
-    mockup:A("super-mockup-oferta-ZDvK5T8y.png"),
-    preco:"https://quizsarava.lovable.app/__l5e/assets-v1/042e462b-9f87-428e-bccd-53438d427811/preco-1990.png",
-    secure:"https://quizsarava.lovable.app/__l5e/assets-v1/38505c1d-d952-4d16-9eb9-7f75af2eacd5/wiapy-secure-checkout.png"
+    mockup:A("super-mockup-oferta-ZDvK5T8y.png")
   };
   // Prévia do app: arquivo hospedado no próprio projeto (pasta video/).
-  // O vídeo só é baixado quando a pessoa clica no play, igual à fachada do Vimeo.
+  // Só é baixado quando a pessoa clica no play.
   var VID_APP={ file:CFG.VIDEO_APP||"video/app-mapa-mental.mp4",
                 poster:CFG.VIDEO_APP_POSTER||"img/app-mapa-mental-capa.jpg",
                 ratio:"1034/1920", cap:"Prévia do Aplicativo" };
-  // Vídeo do Vimeo (proporção real)
-  var VID_IMP={id:"1180197942", ratio:"240/426", cap:"Versão impressa e encadernada", thumb:"https://i.vimeocdn.com/video/2142250564-c03bcbbeb4b839b26ca7055d733aa62a2c249426821422dea254181134412503-d_640?region=us"};
 
   var CHEV='<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>';
   function imgTag(src,cls,alt){return '<img class="'+(cls||'')+'" src="'+src+'" alt="'+(alt||'')+'" onerror="this.style.display=\'none\'">';}
   function videoBox(v){
-    var attr, capa, link;
-    if(v.file){            // arquivo local
-      attr='data-src="'+v.file+'" data-poster="'+v.poster+'"';
-      capa=v.poster; link='';
-    } else {               // Vimeo
-      attr='data-vid="'+v.id+'"';
-      capa=v.thumb;
-      link=' · <a href="https://vimeo.com/'+v.id+'" target="_blank" rel="noopener">abrir vídeo</a>';
-    }
     return '<div class="videobox" style="aspect-ratio:'+v.ratio+'">'+
-      '<button class="vfacade" '+attr+' aria-label="Reproduzir '+v.cap+'">'+
-        '<img src="'+capa+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
+      '<button class="vfacade" data-src="'+esc(v.file)+'" data-poster="'+esc(v.poster)+'"'+
+        ' aria-label="Reproduzir '+esc(v.cap)+'">'+
+        '<img src="'+esc(v.poster)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
         '<span class="vplay">▶</span>'+
       '</button></div>'+
-      '<p class="video-cap">▶ '+v.cap+link+'</p>';
+      '<p class="video-cap">▶ '+esc(v.cap)+'</p>';
   }
 
   var Q=[
@@ -982,7 +966,6 @@
       '<p class="warn-note">Não achou o e-mail? Confira a caixa de spam ou o lixo eletrônico.</p>'+
       '<p class="segq" style="margin-top:20px">Veja uma prévia do que você vai receber</p>'+
       videoBox(VID_APP)+
-      videoBox(VID_IMP)+
       guideLine("Pronto para começar a sua jornada?")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Entendi! Mas quanto custa? <span aria-hidden="true">→</span></button>'+
       '</div>';
@@ -1082,15 +1065,11 @@
     if(fac){
       if(bgm){ bgm.pause(); musicOn=false; updateMusicIcon(); } // pausa a musica de fundo p/ o video ter o som limpo
       var box=fac.closest(".videobox");
-      var src=fac.getAttribute("data-src");
-      if(src){   // arquivo local: so agora o mp4 comeca a ser baixado
-        box.innerHTML='<video src="'+esc(src)+'" poster="'+esc(fac.getAttribute("data-poster")||"")+'"'+
-          ' controls autoplay playsinline preload="auto"'+
-          ' style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0c0c14"></video>';
-      } else {   // Vimeo
-        var id=fac.getAttribute("data-vid");
-        box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-      }
+      // so agora o mp4 comeca a ser baixado
+      box.innerHTML='<video src="'+esc(fac.getAttribute("data-src"))+'"'+
+        ' poster="'+esc(fac.getAttribute("data-poster")||"")+'"'+
+        ' controls autoplay playsinline preload="auto"'+
+        ' style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0c0c14"></video>';
       return;
     }
     startMusic();
