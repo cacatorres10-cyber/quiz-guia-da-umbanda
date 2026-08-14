@@ -102,12 +102,9 @@ vez de mostrar ícone de imagem quebrada.
 ## 4. Fluxo de telas atual
 
 ```
-intro → q0 → q1 → q2 → q6 → q7 → q8 → analyzing → result → promessa → offer
+intro → q0 → q1 → q2 → q6 → q7 → q8 → name → analyzing → result → promessa → offer
 ```
 
-Telas prontas no código mas fora do fluxo: `name`, `pitch`, `visao`,
-`delivery`, `bonus`.
-
-A tela `name` (pede o primeiro nome) estar fora do fluxo faz com que
-`state.name` fique sempre vazio — a personalização por nome no resultado e na
-oferta nunca acontece.
+Telas prontas no código mas fora do fluxo: `pitch`, `visao`, `delivery`,
+`bonus`. É por isso que as imagens de bônus, o mockup e o segundo vídeo não
+aparecem. Para reativar alguma, basta incluir o nome dela no array `FLOW`.

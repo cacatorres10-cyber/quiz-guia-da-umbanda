@@ -481,7 +481,7 @@
     altar:"gostaria de aprender a montar o seu altar em casa"
   };
 
-  var FLOW=["intro","q0","q1","q2","q6","q7","q8","analyzing","result","promessa","offer"];
+  var FLOW=["intro","q0","q1","q2","q6","q7","q8","name","analyzing","result","promessa","offer"];
   var state={ i:0, seg:null, name:"", points:0, wsum:0, wmax:0, pains:[], displayScore:70, tier:null, answering:false };
 
   var app=document.getElementById("app");
@@ -819,10 +819,10 @@
 
   function offer(){
     var total=STACK.reduce(function(a,s){return a+s.p;},0);
-    var nm=state.name?state.name+", ":"";
+    var nm=state.name?(state.name+", você"):"Você";
     app.innerHTML='<div class="view">'+
       '<div class="center"><span class="badge-top">🔥 O mais vendido</span></div>'+
-      '<h2 class="sec-h">'+nm+'você está a um passo de <span class="hl">entender a Umbanda com clareza</span></h2>'+
+      '<h2 class="sec-h">'+nm+' está a um passo de <span class="hl">entender a Umbanda com clareza</span></h2>'+
       '<div class="redeem"><div class="rt">💎 Você acumulou <b>'+state.points+' pontos</b> de Saldo Espiritual.</div><div class="rt" style="margin-top:4px">Eles desbloquearam o <b>valor promocional de hoje</b>, válido enquanto esta página estiver aberta.</div></div>'+
       '<div class="timer"><span>⏳ Sua condição expira em</span><span class="clock" id="clock">15:00</span></div>'+
       '<div class="card"><ul class="stack">'+STACK.map(function(s){return stackRow(s);}).join("")+
