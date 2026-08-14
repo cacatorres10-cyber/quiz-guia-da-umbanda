@@ -11,19 +11,40 @@ Estes dois são chamados pelo código mas não existem aqui. Precisam ser enviad
 
 | Arquivo | Onde aparece | Situação hoje |
 |---|---|---|
-| `audio/ori-background.mp3` | Música de fundo (botão 🔊 no topo) | **Ausente** → o botão de música some sozinho |
 | `img/helena.png` | Foto no rodapé, "Conteúdo de Mãe Helena de Oxóssi" | **Ausente** → entra um avatar cinza neutro |
 | `img/depoimentos/1.png` | Carrossel — print do Instagram (@ceucomcores) | **Ausente** → slide cai para o texto |
 | `img/depoimentos/2.png` | Carrossel — print do Instagram ("surreal!") | **Ausente** → slide cai para o texto |
 | `img/depoimentos/3.png` | Carrossel — print do WhatsApp (bônus) | **Ausente** → slide cai para o texto |
 
-Basta soltar os arquivos nas pastas `audio/`, `img/` e `img/depoimentos/` com
-esses nomes exatos. Se preferir outro nome, ajuste `MUSICA`, `FOTO_AUTORA` ou
-`DEPOIMENTOS` no `QUIZ_CONFIG`.
+Basta soltar os arquivos nas pastas `img/` e `img/depoimentos/` com esses nomes
+exatos. Se preferir outro nome, ajuste `FOTO_AUTORA` ou `DEPOIMENTOS` no
+`QUIZ_CONFIG`.
 
-Sobre a música: use uma faixa que você tenha direito de usar (própria, comprada
-ou de banco livre de royalties). Ponto de atabaque gravado em terreiro sem
-autorização não deve ir para uma página de venda.
+---
+
+## 1b. Música de fundo ✅
+
+`audio/ori-background.mp3` — 4min46s, em loop, tocando a 15% de volume.
+
+O arquivo enviado passou por três ajustes antes de entrar:
+
+- **0,58 s de silêncio no começo foram cortados.** O arquivo terminava em volume
+  cheio e recomeçava com silêncio, o que dava um corte seco a cada volta do loop.
+- **Ganho de +9 dB.** O original tinha pico em −12,9 dB e média em −27,9 dB; a
+  15% de volume ficaria praticamente inaudível no celular. Agora o pico é
+  −4,1 dB e a média −19,3 dB, com folga de sobra para não distorcer.
+- **Fade de 0,8 s na entrada e 1,6 s na saída**, para a emenda do loop virar uma
+  respirada em vez de um corte.
+
+Reencodado de 128 para 96 kbps: 4,6 MB → 3,3 MB. É música ambiente a volume
+baixo, a diferença não se percebe.
+
+O volume fica em `MUSICA_VOLUME` no `QUIZ_CONFIG`. Suba para `0.25` se achar
+discreto demais, desça para `0.10` se incomodar.
+
+Se um dia trocar a faixa, use uma que você tenha direito de usar (própria,
+comprada ou de banco livre de royalties). Ponto de atabaque gravado em terreiro
+sem autorização não deve ir para uma página de venda.
 
 ---
 

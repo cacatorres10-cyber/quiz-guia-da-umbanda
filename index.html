@@ -28,6 +28,9 @@
     // Música de fundo. Coloque o arquivo em audio/ e confira o nome aqui.
     // Se o arquivo não existir, o botão de música some sozinho (sem erro).
     MUSICA: "audio/ori-background.mp3",
+    // Volume da música, de 0 a 1. É música de fundo, então fica bem baixa.
+    // Suba para 0.25 se achar discreta demais, desça para 0.10 se incomodar.
+    MUSICA_VOLUME: 0.15,
 
     // Foto do rodapé. Coloque o arquivo em img/ e confira o nome aqui.
     // Se não existir, entra um avatar neutro no lugar.
@@ -567,7 +570,8 @@
   var musicOn=true;              // ligada por padrao (a pessoa desliga no botao se quiser)
   var musicOk=true;              // vira false se o arquivo de audio nao carregar
   if(bgm){
-    bgm.volume=0.15;             // volume baixo, de fundo
+    var vol=parseFloat(CFG.MUSICA_VOLUME);
+    bgm.volume=(isNaN(vol)?0.15:Math.max(0,Math.min(1,vol)));  // volume baixo, de fundo
     bgm.src=CFG.MUSICA||"audio/ori-background.mp3";
     // Arquivo ausente ou formato nao suportado: esconde o botao em vez de
     // deixar um controle que nao faz nada.
