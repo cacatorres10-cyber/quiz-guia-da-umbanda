@@ -339,7 +339,7 @@
   .car-print{background:var(--surface);border:1px solid var(--line);border-radius:14px;
     overflow:hidden;box-shadow:var(--shadow-sm);width:fit-content;max-width:100%;
     margin:0 auto;position:relative;cursor:zoom-in}
-  .car-print img{display:block;max-height:340px;width:auto;max-width:100%}
+  .car-print img{display:block;max-height:300px;width:auto;max-width:100%}
   .car-hint{text-align:center;font-size:11px;color:var(--faint);font-weight:700;margin:4px 0 0;opacity:.85}
   .lbox{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:flex;
     align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
@@ -982,12 +982,10 @@
         imgTag(IMG.b3,"","Bônus 3")+imgTag(IMG.b4,"","Bônus 4")+
       '</div>'+
       imgTag(IMG.b6mais,"mockup","Mais 6 bônus exclusivos")+
-      proof("Quem já está estudando com o material")+
       '<p class="lead-hl" style="margin-top:8px">E tudo isso começa por apenas <span class="mark">R$19,90</span>.</p>'+
       guideLine("Veja a sua oferta de hoje...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Ver a minha oferta! <span aria-hidden="true">→</span></button>'+
       '</div>';
-    initCarrossel();
   }
 
   function stackRow(s){
@@ -1044,9 +1042,8 @@
       '</div>'+
       '<p class="center lead" style="font-size:14px;margin-top:12px">Pagamento único · Acesso vitalício · Sem mensalidade · Pix, cartão e boleto 🔒</p>'+
       '<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
-      proof("O que dizem os alunos")+
+      // sem depoimentos aqui: eles aparecem uma vez só, embaixo do vídeo
       '</div>';
-    initCarrossel();
     startClock();
   }
 
