@@ -243,6 +243,15 @@
   .video-cap{text-align:center;font-size:13.5px;color:var(--faint);margin:0 0 12px;font-weight:700}
   .video-cap a{color:var(--blue)}
 
+  /* blocos de benefício: título curto em negrito + uma linha de explicação,
+     para o olho pegar a ideia sem precisar ler o parágrafo inteiro */
+  .benef{list-style:none;padding:0;margin:10px 0 14px}
+  .benef li{display:flex;gap:12px;align-items:flex-start;background:var(--surface2);
+    border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:9px;text-align:left}
+  .benef .bi{font-size:20px;line-height:1.15;flex-shrink:0}
+  .benef b{display:block;font-size:15.5px;color:var(--ink);font-weight:900;margin-bottom:1px}
+  .benef small{display:block;font-size:14px;color:var(--ink-soft);font-weight:600;line-height:1.4}
+
   .vis{list-style:none;padding:0;margin:14px auto;text-align:left;max-width:380px}
   .vis li{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px;font-weight:700;font-size:16px;color:var(--ink)}
   .vis li span{color:var(--good);font-weight:900;margin-right:8px}
@@ -767,18 +776,25 @@
     app.innerHTML='<div class="view">'+
       '<p class="eyebrow">O que muda pra você</p>'+
       '<h2 class="qtitle" style="margin-bottom:14px">Imagine você daqui a <span class="hl">algumas semanas</span>…</h2>'+
-      '<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Veja como é o <b>app por dentro</b>:</p>'+
+      // abre o laço: primeiro mostra, depois explica
+      '<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Primeiro olha o app <b>por dentro</b>. Depois eu te conto o que muda.</p>'+
       '<div class="promo-video" style="max-width:300px;margin:0 auto 6px">'+videoBox(VID_APP)+'</div>'+
-      '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso é só uma <b>pequena amostra</b>. Por dentro, o app tem muito mais.</p>'+
+      '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso foi <b>um minuto</b>. Lá dentro tem o Mapa inteiro e <b>44 aulas</b>.</p>'+
       proof("Quem já está estudando com o material")+
-      '<div class="card" style="text-align:left">'+
-        '<p style="margin:0 0 10px">Abrindo o Mapa e entendendo cada fundamento com <b>clareza</b>: os Orixás, os guias, os rituais, sem se perder no meio de tanta informação.</p>'+
-        '<p style="margin:0 0 10px">Estudando no seu tempo, <b>guiado(a) passo a passo</b>, como quem tem um mestre ao lado.</p>'+
-        '<p style="margin:0">Mais firme na sua fé, e pronto(a) pra <b>servir ainda mais na caridade</b>. 🕯️</p>'+
-      '</div>'+
+      // fecha o laço aberto lá em cima
+      '<p class="segq" style="margin:18px 0 2px">Então, o que muda pra você:</p>'+
+      '<ul class="benef">'+
+        '<li><span class="bi">🔎</span><span><b>A ficha cai</b>'+
+          '<small>Orixás, guias e rituais, cada peça no lugar. Acabou o aprendizado em caco solto.</small></span></li>'+
+        '<li><span class="bi">🕰️</span><span><b>No seu tempo</b>'+
+          '<small>Passo a passo, guiado(a), como quem estuda com um mestre do lado.</small></span></li>'+
+        '<li><span class="bi">🕯️</span><span><b>Firmeza na hora da dúvida</b>'+
+          '<small>Você para de travar na gira e serve melhor na caridade.</small></span></li>'+
+      '</ul>'+
+      // abre o próximo laço: o preço, que a tela da oferta vai fechar
       '<div style="text-align:center;background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:14px;padding:14px 16px;margin:0 0 14px">'+
-        '<p style="margin:0 0 6px;font-weight:800;color:var(--ink);font-size:15px">🎥 E ainda tem <b>aulas gravadas</b> explicando cada conteúdo, passo a passo.</p>'+
-        '<p style="margin:0;font-weight:800;color:var(--coral-d);font-size:15px">E tudo isso começa por apenas <span style="font-size:21px;font-weight:900">R$19,90</span>.</p>'+
+        '<p style="margin:0 0 6px;font-weight:800;color:var(--ink);font-size:15px">E você não vai fazer isso sozinho(a): são <b>44 aulas gravadas</b>, explicando cada conteúdo.</p>'+
+        '<p style="margin:0;font-weight:800;color:var(--coral-d);font-size:15px">Tudo isso começa por <span style="font-size:21px;font-weight:900">R$19,90</span>.</p>'+
       '</div>'+
       guideLine("É essa a caminhada que preparei pra você...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar essa caminhada <span aria-hidden="true">→</span></button>'+
