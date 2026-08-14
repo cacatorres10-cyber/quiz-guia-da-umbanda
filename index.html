@@ -18,6 +18,21 @@
     CLARITY_ID: "",                      // <-- seu ID do Microsoft Clarity (opcional)
     // UTMify: os scripts oficiais ficam logo abaixo deste bloco (Pixel + captura de UTMs)
 
+    // ---- MÍDIA (imagens, som e vídeo) --------------------------------
+    // De onde vêm as imagens do quiz. Hoje elas são puxadas do site
+    // original (quizsarava.lovable.app). Se um dia você baixar as imagens
+    // para dentro deste repositório (pasta img/), troque para "img/".
+    // Veja MIDIA.md na raiz do projeto com a lista completa de arquivos.
+    ASSET_BASE: "https://quizsarava.lovable.app/assets/",
+
+    // Música de fundo. Coloque o arquivo em audio/ e confira o nome aqui.
+    // Se o arquivo não existir, o botão de música some sozinho (sem erro).
+    MUSICA: "audio/ori-background.mp3",
+
+    // Foto do rodapé. Coloque o arquivo em img/ e confira o nome aqui.
+    // Se não existir, entra um avatar neutro no lugar.
+    FOTO_AUTORA: "img/helena.png",
+
     // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
     // Enquanto a lista estiver vazia, o bloco de depoimentos não aparece na página.
     // Formato: { texto:"...", nome:"Maria S.", local:"Salvador/BA", foto:"URL da foto (opcional)" }
@@ -329,7 +344,7 @@
 
   <footer>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
-      <img src="img/helena.png" alt="Mãe Helena de Oxóssi" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--line2)" onerror="this.style.display='none'">
+      <img id="autoraFoto" alt="Mãe Helena de Oxóssi" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--line);background:var(--surface2)">
       <div style="text-align:left">
         <div style="font-weight:800;color:var(--ink);font-size:14px">Conteúdo de Mãe Helena de Oxóssi</div>
         <div style="color:var(--faint);font-size:12.5px;font-weight:700">Casa dos Ventos · Salvador/BA</div>
@@ -338,14 +353,14 @@
     <p style="text-align:center;color:var(--faint);font-size:12.5px;font-weight:700;margin:12px 0 0">🔒 Pagamento 100% seguro, processado pela Cakto</p>
   </footer>
 </div>
-<audio id="bgm" src="audio/ori-background.mp3" loop preload="none"></audio>
-<p class="devnote">⚙️ Antes de publicar: preencha QUIZ_CONFIG (link de afiliado, pixels e depoimentos reais) no topo do arquivo. Remova esta linha depois.</p>
+<audio id="bgm" loop preload="none"></audio>
 
 <script>
 (function(){
   "use strict";
   var CFG=window.QUIZ_CONFIG||{};
-  var BASE="https://quizsarava.lovable.app/assets/";
+  var BASE=CFG.ASSET_BASE||"https://quizsarava.lovable.app/assets/";
+  if(BASE && BASE.charAt(BASE.length-1)!=="/") BASE+="/";
   function A(f){return BASE+f;}
   var CHECKOUT=CFG.CHECKOUT||"SEU_LINK_DE_AFILIADO";
   var CHECKOUT_COMPLETO=CFG.CHECKOUT_COMPLETO||"SEU_LINK_COMPLETO";
@@ -384,7 +399,7 @@
   function videoBox(v){
     return '<div class="videobox" style="aspect-ratio:'+v.ratio+'">'+
       '<button class="vfacade" data-vid="'+v.id+'" aria-label="Reproduzir '+v.cap+'">'+
-        '<img src="'+v.thumb+'" alt="" loading="lazy">'+
+        '<img src="'+v.thumb+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'+
         '<span class="vplay">▶</span>'+
       '</button></div>'+
       '<p class="video-cap">▶ '+v.cap+' · <a href="https://vimeo.com/'+v.id+'" target="_blank" rel="noopener">abrir vídeo</a></p>';
@@ -474,13 +489,37 @@
   var saldoNum=document.getElementById("saldoNum");
   var progBar=document.getElementById("progBar");
 
+  // ---- foto da autora no rodapé ----
+  // Se o arquivo configurado em FOTO_AUTORA não existir, entra um avatar
+  // neutro em SVG, assim o rodapé nunca fica com um espaço vazio.
+  (function(){
+    var el=document.getElementById("autoraFoto"); if(!el) return;
+    var AVATAR="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">'+
+      '<rect width="56" height="56" fill="#f1f1f4"/>'+
+      '<circle cx="28" cy="21" r="9" fill="#c9c9d2"/>'+
+      '<path d="M9 53c0-10.5 8.5-17 19-17s19 6.5 19 17z" fill="#c9c9d2"/></svg>');
+    el.onerror=function(){ el.onerror=null; el.src=AVATAR; };
+    el.src=CFG.FOTO_AUTORA||"img/helena.png";
+  })();
+
   // ---- música de fundo ----
   var bgm=document.getElementById("bgm");
   var musicBtn=document.getElementById("musicBtn");
   var musicOn=true;              // ligada por padrao (a pessoa desliga no botao se quiser)
-  if(bgm){ bgm.volume=0.15; }    // volume baixo, de fundo
+  var musicOk=true;              // vira false se o arquivo de audio nao carregar
+  if(bgm){
+    bgm.volume=0.15;             // volume baixo, de fundo
+    bgm.src=CFG.MUSICA||"audio/ori-background.mp3";
+    // Arquivo ausente ou formato nao suportado: esconde o botao em vez de
+    // deixar um controle que nao faz nada.
+    bgm.addEventListener("error", function(){
+      musicOk=false; musicOn=false;
+      if(musicBtn) musicBtn.style.display="none";
+    });
+  }
   function updateMusicIcon(){ if(musicBtn) musicBtn.textContent = musicOn ? "🔊" : "🔈"; }
-  function tryStart(){ if(bgm && musicOn && bgm.paused){ bgm.play().catch(function(){}); } }
+  function tryStart(){ if(bgm && musicOk && musicOn && bgm.paused){ bgm.play().catch(function(){}); } }
   function startMusic(){ tryStart(); } // usado tambem no handler de clique do quiz
   if(bgm){ tryStart(); }         // tenta tocar de imediato (navegador costuma bloquear ate a 1a interacao)
   // 1o toque/rolagem/tecla em qualquer lugar libera o audio
@@ -488,7 +527,7 @@
   document.addEventListener("touchstart", tryStart, {passive:true});
   document.addEventListener("keydown", tryStart);
   if(musicBtn){ musicBtn.addEventListener("click", function(e){ e.stopPropagation();
-    if(!bgm) return;
+    if(!bgm || !musicOk) return;
     musicOn=!musicOn;
     if(musicOn){ bgm.play().catch(function(){}); } else { bgm.pause(); }
     updateMusicIcon();
@@ -506,9 +545,13 @@
     setTimeout(function(){ saldoNum.textContent=to; },560);
   }
   function setProgress(){
-    var nameIdx=FLOW.indexOf("name"); var pct;
-    if(state.i<=nameIdx){ pct=6+(state.i/nameIdx)*64; }
-    else { var after=FLOW.length-1-nameIdx; pct=70+((state.i-nameIdx)/after)*30; }
+    // Perguntas ocupam de 6% a 70% da barra; diagnóstico, resultado e oferta
+    // ocupam de 70% a 100%. Ancorado em "analyzing", que é o fim das perguntas.
+    var midIdx=FLOW.indexOf("analyzing");
+    if(midIdx<1) midIdx=Math.max(1,FLOW.length-1);
+    var pct;
+    if(state.i<=midIdx){ pct=6+(state.i/midIdx)*64; }
+    else { var after=(FLOW.length-1-midIdx)||1; pct=70+((state.i-midIdx)/after)*30; }
     progBar.style.width=Math.min(pct,100)+"%";
   }
   function go(delta){ state.i+=delta; render(); window.scrollTo({top:0,behavior:"smooth"}); }
@@ -564,8 +607,6 @@
       guideLine("É essa a caminhada que preparei pra você...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar essa caminhada <span aria-hidden="true">→</span></button>'+
     '</div>';
-    var v=app.querySelector('video');
-    if(v){ v.addEventListener('play',function(){ if(bgm && !bgm.paused){ bgm.pause(); musicOn=false; updateMusicIcon(); } }); }
   }
 
   function intro(){
