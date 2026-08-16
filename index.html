@@ -182,6 +182,17 @@
 
   .warnbox{background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:12px;padding:13px 15px;margin:14px 0;font-size:15px;color:var(--ink-soft);font-weight:600;text-align:center}
 
+  /* promessa do presente: precisa saltar da tela, é o gancho da abertura */
+  .giftbox{position:relative;text-align:center;margin:16px 0 14px;padding:16px 16px 15px;
+    border-radius:16px;border:2px solid rgba(233,65,53,.34);
+    background:linear-gradient(135deg,rgba(233,65,53,.10),rgba(224,164,42,.14));
+    box-shadow:0 12px 30px -18px rgba(233,65,53,.75)}
+  .giftbox .gicon{font-size:26px;line-height:1;display:block;margin-bottom:5px}
+  .giftbox p{margin:0;font-size:19px;line-height:1.38;font-weight:800;color:var(--coral-d)}
+  .giftbox .mark{background:linear-gradient(180deg,transparent 52%,rgba(233,65,53,.30) 52%);
+    color:var(--coral-d);font-weight:900;padding:0 3px;border-radius:3px}
+  @media (max-width:380px){ .giftbox p{font-size:17.5px} }
+
   /* ---- options ---- */
   .opts{display:flex;flex-direction:column;gap:11px;margin:14px 0 8px}
   .opts.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
@@ -817,7 +828,9 @@
       '<p class="eyebrow">Descubra o seu nível · 2 minutos</p>'+
       '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">2 minutos</span>, descubra o que você mais precisa aprender na Umbanda. E o app reúne tudo isso, organizado pra você.</h2>'+
       '<p class="lead" style="font-size:16px;margin-bottom:10px">Responda só <b>6 perguntinhas</b> rápidas: elas mostram onde focar a sua caminhada.</p>'+
-      '<p class="lead-hl">Ficando <span class="mark">até o final</span>, você libera uma <span class="mark">condição exclusiva e especial</span> para receber o app. 🎁</p>'+
+      '<div class="giftbox"><span class="gicon">🎁</span>'+
+        '<p>Ficando <span class="mark">até o final</span>, você libera um <span class="mark">presente exclusivo</span> para a sua jornada.</p>'+
+      '</div>'+
       '<div class="warnbox"><b class="hl">⚠️ Atenção!</b> Continue apenas se seu objetivo é aprender sobre a Umbanda com respeito e interesse genuíno.</div>'+
       '<p class="segq">Você é iniciante ou já é umbandista?</p>'+
       '<div class="opts grid2">'+
