@@ -111,7 +111,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Fonte variável: um arquivo só cobrindo 400 a 900, no lugar de cinco
+     arquivos estáticos. Mesma aparência, um quinto das requisições. -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..900&display=swap" rel="stylesheet">
+<!-- As duas imagens da abertura são inseridas por JS, então o navegador não
+     as descobre sozinho ao ler o HTML. O preload adianta a busca delas.
+     Se trocar os arquivos em QUIZ_CONFIG.IMAGENS, atualize estas linhas. -->
+<link rel="preload" as="image" href="img/iniciante.jpg">
+<link rel="preload" as="image" href="img/umbandista.jpg">
 <style>
   :root{
     --bg:#ffffff; --ink:#1a1a1a; --ink-soft:#55555f; --faint:#8e8e99;
@@ -439,7 +446,7 @@
 
   <footer>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
-      <img id="autoraFoto" alt="Mãe Helena de Oxóssi" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--line);background:var(--surface2)">
+      <img id="autoraFoto" alt="Mãe Helena de Oxóssi" loading="lazy" decoding="async" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--line);background:var(--surface2)">
       <div style="text-align:left">
         <div style="font-weight:800;color:var(--ink);font-size:14px">Conteúdo de Mãe Helena de Oxóssi</div>
         <div style="color:var(--faint);font-size:12.5px;font-weight:700">Casa dos Ventos · Salvador/BA</div>
