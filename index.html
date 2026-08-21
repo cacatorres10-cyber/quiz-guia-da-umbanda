@@ -282,6 +282,29 @@
   .benef b{display:block;font-size:14.5px;color:var(--ink);font-weight:900;margin-bottom:1px}
   .benef small{display:block;font-size:13px;color:var(--ink-soft);font-weight:600;line-height:1.38}
 
+  /* bloco de desejo, no fim do diagnóstico */
+  .desejo{background:linear-gradient(160deg,rgba(7,176,237,.07),rgba(233,65,53,.07));
+    border:1px solid rgba(7,176,237,.22);border-radius:16px;padding:16px 17px 14px;margin:14px 0;text-align:left}
+  .dj-t{margin:0 0 9px;font-size:16px;font-weight:900;color:var(--ink);text-align:center}
+  .dj-p{margin:0 0 9px;font-size:15px;line-height:1.5;color:var(--ink-soft);font-weight:600}
+  .dj-p b{color:var(--ink);font-weight:800}
+  .dj-f{margin:0;color:var(--coral-d);font-weight:800}
+  .dj-f b{color:var(--coral-d)}
+
+  /* mecanismo em 3 movimentos, na tela da oferta */
+  .mec-t{text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--faint);font-weight:800;margin:0 0 10px}
+  .mec{list-style:none;padding:0;margin:0 0 16px;counter-reset:m}
+  .mec li{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:0 0 12px;position:relative}
+  .mec li:not(:last-child)::before{content:"";position:absolute;left:13px;top:30px;bottom:2px;
+    width:2px;background:linear-gradient(180deg,rgba(233,65,53,.34),rgba(233,65,53,.08))}
+  .mec .mn{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--coral);color:#fff;
+    font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;z-index:1}
+  .mec b{display:block;font-size:15px;color:var(--ink);font-weight:900;margin-bottom:1px}
+  .mec small{display:block;font-size:13.5px;color:var(--ink-soft);font-weight:600;line-height:1.4}
+  .prod-sub{text-align:center;font-size:14px;color:var(--ink-soft);font-weight:700;line-height:1.45;margin:0 0 12px}
+  .prod-sub b{color:var(--ink)}
+
   .vis{list-style:none;padding:0;margin:14px auto;text-align:left;max-width:380px}
   .vis li{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px;font-weight:700;font-size:16px;color:var(--ink)}
   .vis li span{color:var(--good);font-weight:900;margin-right:8px}
@@ -518,24 +541,29 @@
   }
 
   var Q=[
-    { id:"fundamento", kind:"knowledge", grid:true,
-      q:"Qual é o principal fundamento da religião de Umbanda?",
+    // Espelho de intencao: as tres respostas sao igualmente validas, entao a
+    // pergunta nao pontua. Ela guarda o desejo em state.desejo e o diagnostico
+    // usa isso para falar do que a pessoa disse que mais quer viver.
+    { id:"desejo", kind:"intencao", grid:true,
+      q:"Quando você pensa na Umbanda, o que mais deseja compreender e viver?",
       opts:[
-        {t:"Os Orixás", img:IMG.orixas, correct:false},
-        {t:"Os Pretos Velhos", img:IMG.pretovelhos, correct:false},
-        {t:"A Caridade", img:IMG.caridade, correct:true}
+        {t:"Seus fundamentos", img:IMG.orixas, desejo:"fundamentos"},
+        {t:"A força dos Orixás e entidades", img:IMG.pretovelhos, desejo:"orixas"},
+        {t:"O sentido da caridade", img:IMG.caridade, desejo:"caridade"}
       ]
     },
     { id:"entidades", kind:"scale", img:IMG.q_entidades,
-      q:"Você conhece os Orixás e as entidades que trabalham nos terreiros?",
+      q:"O quanto você sente que conhece os Orixás e as entidades que fazem parte dessa caminhada?",
       opts:[{t:"Sim, todas!",w:3},{t:"Conheço algumas.",w:2},{t:"Ainda estou aprendendo.",w:1},{t:"Não conheço nenhuma!",w:0}]
     },
-    { id:"pontos", kind:"knowledge", img:IMG.q_pontos,
-      q:"O que são os pontos riscados na Umbanda?",
+    // Polaridade invertida de proposito: querer compreender agora indica que a
+    // pessoa ainda esta se aproximando, entao pesa menos na escala.
+    { id:"pontos", kind:"scale", img:IMG.q_pontos,
+      q:"Você gostaria de compreender melhor os símbolos e pontos que ajudam a estabelecer conexão com as entidades?",
       opts:[
-        {t:"Desenhos sagrados que identificam e chamam as entidades", correct:true},
-        {t:"Um tipo de oferenda", correct:false},
-        {t:"Não sei, mas estou curioso(a)!", correct:false}
+        {t:"Já compreendo bem o significado deles.", w:2},
+        {t:"Conheço alguns, mas quero entender melhor.", w:1},
+        {t:"Sim, gostaria muito de compreender.", w:0}
       ]
     },
     { id:"dificuldade", kind:"pain", img:IMG.q_dificuldades,
@@ -559,15 +587,15 @@
       opts:[{t:"Sim, conheço e entendo.",w:2},{t:"Conheço alguns, mas tenho dúvidas.",w:1,pain:"orixas"},{t:"Não, gostaria de aprender.",w:0,pain:"orixas"}]
     },
     { id:"rituais", kind:"pain", img:IMG.q_rituais,
-      q:"Como você se sente em relação aos rituais básicos da Umbanda?",
-      opts:[{t:"Confiante, já sei realizar.",w:2},{t:"Um pouco inseguro(a), mas quero aprender.",w:1,pain:"rituais"},{t:"Perdido(a), preciso de ajuda.",w:0,pain:"rituais"}]
+      q:"Quando participa ou observa um ritual, como você se sente?",
+      opts:[{t:"Conectado(a), compreendo o que acontece.",w:2},{t:"Ainda tentando compreender cada momento.",w:1,pain:"rituais"},{t:"Inseguro(a), gostaria de entender melhor.",w:0,pain:"rituais"}]
     },
     { id:"altar", kind:"pain", img:IMG.q_altar,
-      q:"Você sabe montar um altar (congá) simples para se conectar aos Orixás em casa?",
-      opts:[{t:"Sim, já tenho o meu.",w:2},{t:"Tenho dúvidas de como fazer certo.",w:1,pain:"altar"},{t:"Não, mas adoraria aprender.",w:0,pain:"altar"}]
+      q:"Você sente vontade de criar em casa um espaço de respeito e conexão, mas tem dúvidas sobre o significado e o cuidado?",
+      opts:[{t:"Já tenho o meu e compreendo o fundamento.",w:2},{t:"Tenho o meu, mas com dúvidas de significado.",w:1,pain:"altar"},{t:"Sinto vontade, mas não sei por onde começar.",w:0,pain:"altar"}]
     },
     { id:"elementos", kind:"scale", img:IMG.q_elementos,
-      q:"Você entende como os Orixás se relacionam com os elementos da natureza?",
+      q:"Você percebe como a natureza, os Orixás e a caridade se relacionam no caminho da Umbanda?",
       opts:[{t:"Sim, profundamente.",w:2},{t:"Um pouco, mas tenho muito a aprender.",w:1},{t:"Não, mas acho fascinante.",w:0}]
     }
   ];
@@ -594,7 +622,7 @@
   };
 
   var FLOW=["intro","q0","q1","q2","q6","q7","q8","name","analyzing","result","promessa","offer"];
-  var state={ i:0, seg:null, name:"", points:0, wsum:0, wmax:0, pains:[], displayScore:70, tier:null, answering:false };
+  var state={ i:0, seg:null, name:"", points:0, wsum:0, wmax:0, pains:[], desejo:null, displayScore:70, tier:null, answering:false };
 
   var app=document.getElementById("app");
   var saldoBox=document.getElementById("saldo");
@@ -801,46 +829,48 @@
 
   function promessa(){
     app.innerHTML='<div class="view">'+
-      '<p class="eyebrow">O que muda pra você</p>'+
-      '<h2 class="qtitle" style="margin-bottom:14px">Imagine você daqui a <span class="hl">algumas semanas</span>…</h2>'+
+      '<p class="eyebrow">O que pode mudar na sua caminhada</p>'+
+      '<h2 class="qtitle" style="margin-bottom:14px">Imagine você daqui a <span class="hl">algumas semanas</span>, olhando para a Umbanda com mais clareza.</h2>'+
       // abre o laço: primeiro mostra, depois explica
-      '<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Primeiro olha o app <b>por dentro</b>. Depois eu te conto o que muda.</p>'+
+      '<p class="lead" style="font-size:15.5px;margin:0 0 10px">Você não busca decorar nomes nem acumular informação. Você quer <b>compreender o que está por trás de cada fundamento</b> e encontrar um jeito consciente de viver esse caminho.</p>'+'<p class="lead" style="font-size:15px;margin:0 0 8px">👇 Veja como a Umbanda faz mais sentido quando o conhecimento está <b>organizado</b>:</p>'+
       '<div class="promo-video" style="max-width:300px;margin:0 auto 6px">'+videoBox(VID_APP)+'</div>'+
-      '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso foi <b>um minuto</b>. Lá dentro tem o Mapa inteiro e <b>44 aulas</b>.</p>'+
+      '<p class="lead" style="font-size:13.5px;color:var(--faint);margin:0 0 14px">Isso foi um minuto. Lá dentro está a jornada completa do Mapa Mental, com <b>44 aulas gravadas</b>, explicações visuais e conteúdo para estudar no seu ritmo.</p>'+
       proof("Quem já está estudando com o material")+
       // fecha o laço aberto lá em cima
-      '<p class="segq" style="margin:16px 0 2px;font-size:16.5px">Então, o que muda pra você:</p>'+
+      '<p class="segq" style="margin:16px 0 2px;font-size:16.5px">O que pode mudar na sua caminhada:</p>'+
       '<ul class="benef">'+
-        '<li><span class="bi">🔎</span><span><b>A ficha cai</b>'+
-          '<small>Orixás, guias e rituais, cada peça no lugar. Acabou o aprendizado em caco solto.</small></span></li>'+
-        '<li><span class="bi">🕰️</span><span><b>No seu tempo</b>'+
-          '<small>Passo a passo, guiado(a), como quem estuda com um mestre do lado.</small></span></li>'+
-        '<li><span class="bi">🕯️</span><span><b>Firmeza na hora da dúvida</b>'+
-          '<small>Você para de travar na gira e serve melhor na caridade.</small></span></li>'+
+        '<li><span class="bi">🧩</span><span><b>O conhecimento faz sentido</b>'+
+          '<small>Você entende como Orixás, entidades, natureza e rituais se relacionam, em vez de estudar tudo como informação solta.</small></span></li>'+
+        '<li><span class="bi">🙏</span><span><b>Você se sente mais perto do caminho</b>'+
+          '<small>O estudo deixa de ser só busca por resposta e vira um jeito de cultivar respeito, presença e conexão.</small></span></li>'+
+        '<li><span class="bi">🕯️</span><span><b>A caridade ganha significado</b>'+
+          '<small>Deixa de ser palavra bonita ou obrigação automática: vira humildade, cuidado e serviço.</small></span></li>'+
+        '<li><span class="bi">🌿</span><span><b>No seu tempo, sem se perder</b>'+
+          '<small>As aulas organizam o caminho para você voltar aos temas, refletir e avançar com tranquilidade.</small></span></li>'+
       '</ul>'+
       // abre o próximo laço: o preço, que a tela da oferta vai fechar
       '<div style="text-align:center;background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:14px;padding:14px 16px;margin:0 0 14px">'+
-        '<p style="margin:0 0 6px;font-weight:800;color:var(--ink);font-size:15px">E você não vai fazer isso sozinho(a): são <b>44 aulas gravadas</b>, explicando cada conteúdo.</p>'+
-        '<p style="margin:0;font-weight:800;color:var(--coral-d);font-size:15px">Tudo isso começa por <span style="font-size:21px;font-weight:900">R$19,90</span>.</p>'+
+        '<p style="margin:0 0 6px;font-weight:800;color:var(--ink);font-size:15px">Você recebe acesso ao aplicativo com o <b>Mapa Mental da Umbanda</b> e <b>44 aulas gravadas</b>, organizadas para apoiar a sua compreensão e a sua caminhada.</p>'+
+        '<p style="margin:0;font-weight:800;color:var(--coral-d);font-size:15px">Acesso completo por <span style="font-size:21px;font-weight:900">R$19,90</span>.</p>'+
       '</div>'+
-      guideLine("É essa a caminhada que preparei pra você...")+
-      '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar essa caminhada <span aria-hidden="true">→</span></button>'+
+      guideLine("Preparei uma jornada para te aproximar mais da Umbanda...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Quero começar minha caminhada de conexão <span aria-hidden="true">→</span></button>'+
     '</div>';
     initCarrossel();
   }
 
   function intro(){
     app.innerHTML='<div class="view">'+
-      '<p class="eyebrow">Descubra o seu nível · 2 minutos</p>'+
-      '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">2 minutos</span>, descubra o que você mais precisa aprender na Umbanda. E o app reúne tudo isso, organizado pra você.</h2>'+
-      '<p class="lead" style="font-size:16px;margin-bottom:10px">Responda só <b>6 perguntinhas</b> rápidas: elas mostram onde focar a sua caminhada.</p>'+
+      '<p class="eyebrow">Sua caminhada na Umbanda</p>'+
+      '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">2 minutos</span>, descubra como se aproximar mais da Umbanda e se conectar com ela.</h2>'+
+      '<p class="lead" style="font-size:16px;margin:0 0 8px">Você quer se sentir <b>mais próximo da Umbanda</b>, compreender seus fundamentos e viver a caridade com mais consciência?</p>'+'<p class="lead" style="font-size:14.5px;color:var(--ink-soft);margin:0 0 12px">Responda 6 perguntas rápidas. No final, você recebe o próximo passo da sua caminhada.</p>'+
       '<div class="giftbox"><span class="gicon">🎁</span>'+
-        '<p>Ficando <span class="mark">até o final</span>, você libera um <span class="mark">presente exclusivo</span> para sua jornada.</p>'+
+        '<p>Ficando <span class="mark">até o final</span>, você libera um <span class="mark">presente especial</span> para continuar sua caminhada.</p>'+
       '</div>'+
-      '<p class="segq">Você é iniciante ou já é umbandista?</p>'+
+      '<p class="segq">Em que momento da sua jornada você está?</p>'+
       '<div class="opts grid2">'+
-        '<button class="opt card" data-act="seg" data-v="iniciante">'+imgTag(IMG.iniciante,"oimg","Iniciante")+'<span>Sou Iniciante</span></button>'+
-        '<button class="opt card" data-act="seg" data-v="umbandista">'+imgTag(IMG.umbandista,"oimg","Umbandista")+'<span>Já sou Umbandista</span></button>'+
+        '<button class="opt card" data-act="seg" data-v="iniciante">'+imgTag(IMG.iniciante,"oimg","Iniciante")+'<span>Estou começando a me aproximar</span></button>'+
+        '<button class="opt card" data-act="seg" data-v="umbandista">'+imgTag(IMG.umbandista,"oimg","Umbandista")+'<span>Já caminho na Umbanda e quero aprofundar minha conexão</span></button>'+
       '</div></div>';
   }
 
@@ -865,6 +895,7 @@
     var q=Q[qi]; var o=q.opts[oi];
     if(typeof o.w==="number"){ state.wsum+=o.w; var mx=Math.max.apply(null,q.opts.map(function(x){return x.w||0;})); state.wmax+=mx; }
     if(q.kind==="knowledge"){ state.wmax+=2; if(o.correct)state.wsum+=2; } // pontua em silêncio, sem revelar a resposta
+    if(o.desejo) state.desejo=o.desejo;
     if(o.pain && state.pains.indexOf(o.pain)===-1) state.pains.push(o.pain);
     animateSaldo(state.points+20);
     var box=document.getElementById("optbox");
@@ -877,11 +908,11 @@
     app.innerHTML='<div class="view center">'+
       imgTag(IMG.guia,"charimg","Pai Oxalá")+
       '<p class="eyebrow">Quase lá</p>'+
-      '<h2 class="qtitle" style="margin-bottom:6px">Antes de revelar o seu resultado: como você se chama?</h2>'+
-      '<p class="lead" style="font-size:15.5px">Assim eu preparo o seu diagnóstico de forma personalizada.</p>'+
+      '<h2 class="qtitle" style="margin-bottom:6px">Antes de mostrar o próximo passo da sua caminhada, como você se chama?</h2>'+
+      '<p class="lead" style="font-size:15.5px">Assim preparo uma mensagem mais acolhedora para você.</p>'+
       '<input class="inp" id="nameInp" type="text" placeholder="Seu primeiro nome" autocomplete="given-name" maxlength="24">'+
-      '<button class="btn btn-gold" data-act="savename">Revelar meu resultado <span aria-hidden="true">✨</span></button>'+
-      '<button class="btn btn-ghost" style="margin-top:10px" data-act="savename" data-skip="1">Prefiro não dizer</button>'+
+      '<button class="btn btn-gold" data-act="savename">Mostrar meu próximo passo <span aria-hidden="true">✨</span></button>'+
+      '<button class="btn btn-ghost" style="margin-top:10px" data-act="savename" data-skip="1">Prefiro continuar sem informar meu nome</button>'+
       '</div>';
     setTimeout(function(){ var el=document.getElementById("nameInp"); if(el)el.focus(); },250);
   }
@@ -891,35 +922,46 @@
     state.displayScore = Math.round(50 + ratio*28);
     if(state.seg==="umbandista") state.displayScore=Math.min(78, state.displayScore+4);
     var s=state.displayScore;
-    if(s>=72) state.tier={n:"Guardião(ã) do Axé", e:"🌟", d:"Você já carrega um conhecimento profundo. Falta apenas organizar tudo num só lugar para praticar com ainda mais segurança."};
-    else if(s>=58) state.tier={n:"Aprendiz de Fé", e:"🕯️", d:"Você já tem uma base sólida e o coração no lugar certo. Com o método certo, os próximos passos vêm rápido."};
-    else state.tier={n:"Semente de Axé", e:"🌱", d:"Você está no comecinho de uma linda jornada, e no momento perfeito para aprender do jeito certo, sem se perder."};
+    if(s>=72) state.tier={n:"Guardião(ã) do Axé", e:"🌟", d:"Você já caminha com base sólida e sente a Umbanda de perto. O que ainda procura é reunir os fundamentos num só lugar, para que cada gira faça ainda mais sentido."};
+    else if(s>=58) state.tier={n:"Aprendiz de Fé", e:"🕯️", d:"Você já sente que existe algo especial na Umbanda e deseja se aproximar mais, mas ainda procura clareza para compreender como os fundamentos, os Orixás, os rituais e a caridade se conectam."};
+    else state.tier={n:"Semente de Axé", e:"🌱", d:"Você está no começo de uma caminhada bonita e chega nela com respeito. Agora é compreender o significado do que já te atrai, sem pressa."};
   }
 
   function mirrorText(){
-    if(!state.pains.length) return "";
-    var parts=state.pains.slice(0,2).map(function(p){return PAIN[p];});
-    var joined = parts.length===2 ? parts[0]+" e "+parts[1] : parts[0];
-    return '<div class="mirror">Você nos contou que <b>'+joined+'</b>. Isso explica por que, mesmo se dedicando, <b>algumas dúvidas ainda insistem em aparecer</b>. Não falta dedicação, falta um método que conecte todas as peças.</div>';
+    var abertura="";
+    if(state.pains.length){
+      var parts=state.pains.slice(0,2).map(function(p){return PAIN[p];});
+      abertura="Você nos contou que <b>"+(parts.length===2?parts[0]+" e "+parts[1]:parts[0])+"</b>. ";
+    }
+    return '<div class="mirror">'+abertura+'<b>Isso não significa falta de dedicação.</b> Significa que você está buscando um caminho organizado, respeitoso e acolhedor para transformar curiosidade em presença.</div>';
   }
 
   function diagnostico(){
     var s=state.displayScore;
+    // o que a pessoa disse que mais quer viver, na primeira pergunta
+    var DESEJO={
+      fundamentos:"compreender os fundamentos que sustentam a religião",
+      orixas:"sentir de perto a força dos Orixás e das entidades",
+      caridade:"viver o sentido da caridade no dia a dia"
+    };
+    var quer=DESEJO[state.desejo];
     var forte;
-    if(s>=72){ forte="Você já domina bem os fundamentos e tem uma base espiritual sólida."; }
-    else if(s>=58){ forte="Você já entende o essencial e tem o coração no lugar certo."; }
-    else { forte="Você está começando com uma vontade verdadeira, que é o mais importante de tudo."; }
-    var PG={rituais:"realizar os rituais básicos com segurança",altar:"montar e cuidar do seu altar (congá) em casa",orixas:"entender os arquétipos e as regências de cada Orixá",organizacao:"organizar num só lugar tudo o que você aprende"};
+    if(s>=72){ forte="respeito pela tradição e uma base que já sustenta a sua caminhada."; }
+    else if(s>=58){ forte="abertura, respeito e o coração no lugar certo."; }
+    else { forte="vontade sincera de se aproximar, que é por onde toda caminhada começa."; }
+    var PG={rituais:"compreender o sentido de cada momento do ritual",altar:"entender o fundamento de um espaço de fé em casa",orixas:"conhecer os arquétipos e as regências de cada Orixá",organizacao:"reunir num só lugar tudo o que você aprende"};
     var pl=(state.pains||[]).slice(0,2).map(function(p){return PG[p];}).filter(function(x){return x;});
     var gap;
-    if(pl.length){ gap="Você mostrou que ainda busca segurança em "+(pl.length===2?pl[0]+" e "+pl[1]:pl[0])+". É exatamente aí que um material claro e passo a passo muda o seu jogo."; }
-    else if(s>=72){ gap="O que falta é ter tudo num só lugar, organizado, para consultar na hora da dúvida."; }
-    else { gap="Falta uma base organizada para você não se perder no meio de tanta informação solta."; }
+    if(pl.length){ gap="compreender o significado por trás das práticas, começando por "+(pl.length===2?pl[0]+" e "+pl[1]:pl[0])+"."; }
+    else if(s>=72){ gap="compreender o significado por trás das práticas e ter os fundamentos reunidos num só lugar, para consultar na hora da dúvida."; }
+    else { gap="compreender o significado por trás das práticas e descobrir como a caridade faz parte da caminhada — não só como ideia, mas como forma de servir e cuidar."; }
+    var linhaDesejo = quer ? '<p style="margin:0 0 9px;font-size:15px">💛 <b>O que você quer viver:</b> '+quer+'.</p>' : '';
     return '<div class="card" style="text-align:left">'+
       '<p style="margin:0 0 10px;font-weight:800;color:var(--ink)">📋 O que o seu diagnóstico revela</p>'+
-      '<p style="margin:0 0 9px;font-size:15px">✅ <b>Seu ponto forte:</b> '+forte+'</p>'+
-      '<p style="margin:0 0 10px;font-size:15px">🎯 <b>Onde focar agora:</b> '+gap+'</p>'+
-      '<p style="margin:0;font-size:15px;color:var(--coral-d);font-weight:700">💡 E é exatamente pra isso que existe o <b>Mapa Mental da Umbanda</b>: ele reúne tudo num só lugar, de forma simples e visual, pra você aprender sem se perder e resolver isso de vez.</p>'+
+      linhaDesejo+
+      '<p style="margin:0 0 9px;font-size:15px">✅ <b>O que já existe em você:</b> '+forte+'</p>'+
+      '<p style="margin:0 0 10px;font-size:15px">🎯 <b>O seu próximo passo:</b> '+gap+'</p>'+
+      '<p style="margin:0;font-size:15px;color:var(--ink-soft);font-weight:600">Esse é o retrato de onde você está hoje. 👇 Agora, o caminho.</p>'+
     '</div>';
   }
 
@@ -936,14 +978,14 @@
         '<div class="num" id="scoreNum">0%</div>'+
       '</div>'+
       imgTag(char,"charimg","")+
-      '<p class="eyebrow" style="margin-bottom:2px">Seu perfil'+nm+'</p>'+
+      '<p class="eyebrow" style="margin-bottom:2px">Seu momento na caminhada'+nm+'</p>'+
       '<div class="tier">'+state.tier.e+' '+state.tier.n+'</div>'+
       '<p class="lead">'+state.tier.d+'</p>'+
       mirrorText()+
       diagnostico()+
       // sem depoimentos aqui: eles aparecem na tela seguinte, embaixo do vídeo
-      guideLine("Preparei o caminho ideal para o seu perfil...")+
-      '<button class="btn btn-gold pulse-cta" data-act="next">Quero chegar ao próximo nível <span aria-hidden="true">→</span></button>'+
+      '<div class="desejo">'+'<p class="dj-t">🧭 O caminho que liga tudo isso</p>'+'<p class="dj-p">O <b>Mapa Mental da Umbanda</b> reúne os fundamentos, os Orixás, as entidades e a natureza numa jornada visual e acolhedora.</p>'+'<p class="dj-p">É o que faz a Umbanda deixar de ser algo que você admira <b>de longe</b> e passar a ser algo que você compreende <b>de perto</b> — com respeito, com calma e no seu tempo.</p>'+'<p class="dj-p dj-f">E a caridade deixa de ser uma palavra bonita: vira um jeito de estar no mundo.</p>'+'</div>'+      guideLine("Preparei o caminho ideal para o seu momento...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Quero compreender melhor minha caminhada <span aria-hidden="true">→</span></button>'+
       '</div>';
     var target=state.displayScore;
     var ring=document.getElementById("ring");
@@ -1040,11 +1082,11 @@
     var total=STACK.reduce(function(a,s){return a+s.p;},0);
     var nm=state.name?(state.name+", você"):"Você";
     app.innerHTML='<div class="view">'+
-      '<div class="center"><span class="badge-top">🔥 O mais vendido</span></div>'+
-      '<h2 class="sec-h">'+nm+' está a um passo de <span class="hl">entender a Umbanda com clareza</span></h2>'+
+      '<div class="center"><span class="badge-top">🔥 O mais escolhido</span></div>'+
+      '<h2 class="sec-h">'+nm+' está a um passo de <span class="hl">viver a Umbanda mais de perto</span></h2>'+'<p class="center lead" style="font-size:15px;margin:0 0 14px">Aproxime-se mais da Umbanda, compreenda os fundamentos do seu caminho e descubra como <b>viver a caridade com mais consciência, respeito e conexão</b>.</p>'+'<p class="mec-t">Como a jornada acontece</p>'+'<ol class="mec">'+'<li><span class="mn">1</span><div><b>Você organiza o entendimento</b><small>Os fundamentos deixam de estar espalhados e ganham ordem.</small></div></li>'+'<li><span class="mn">2</span><div><b>As peças se conectam</b><small>Orixás, entidades, natureza, rituais e caridade passam a fazer sentido juntos.</small></div></li>'+'<li><span class="mn">3</span><div><b>Você caminha com mais presença</b><small>Com segurança para viver o que aprende, sem substituir a orientação do seu terreiro.</small></div></li>'+'</ol>'+
       '<div class="redeem"><div class="rt">💎 Você acumulou <b>'+state.points+' pontos</b> de Saldo Espiritual.</div><div class="rt" style="margin-top:4px">Eles desbloquearam o <b>valor promocional de hoje</b>, válido enquanto esta página estiver aberta.</div></div>'+
       '<div class="timer"><span>⏳ Sua condição expira em</span><span class="clock" id="clock">15:00</span></div>'+
-      '<div class="card"><ul class="stack">'+STACK.map(function(s){return stackRow(s);}).join("")+
+      '<p class="prod-sub"><b>Mapa Mental da Umbanda</b>: uma jornada visual e acolhedora para quem deseja entender melhor a religião, se sentir mais próximo do caminho e transformar conhecimento em vivência.</p>'+'<div class="card"><ul class="stack">'+STACK.map(function(s){return stackRow(s);}).join("")+
         '<div class="totrow"><span class="tl">Valor real de tudo:</span><span class="tv">R$'+total+'</span></div>'+
         '<p class="stacknote">Você não paga nada perto disso hoje 👇</p>'+
       '</ul></div>'+
@@ -1084,7 +1126,7 @@
         '</div>'+
       '</div>'+
       '<p class="center lead" style="font-size:14px;margin-top:12px">Pagamento único · Acesso vitalício · Sem mensalidade · Pix, cartão e boleto 🔒</p>'+
-      '<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
+      '<p class="center lead" style="font-size:13.5px;color:var(--faint);margin:14px 0 4px">O material apoia o seu estudo e a sua compreensão. A vivência ritual segue sempre em diálogo com a sua casa e a liderança do seu terreiro.</p>'+'<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
       // sem depoimentos aqui: eles aparecem uma vez só, embaixo do vídeo
       '</div>';
     startClock();
