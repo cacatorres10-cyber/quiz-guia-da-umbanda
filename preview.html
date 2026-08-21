@@ -283,6 +283,15 @@
   .benef b{display:block;font-size:14.5px;color:var(--ink);font-weight:900;margin-bottom:1px}
   .benef small{display:block;font-size:13px;color:var(--ink-soft);font-weight:600;line-height:1.38}
 
+  /* bloco de desejo, no fim do diagnóstico */
+  .desejo{background:linear-gradient(160deg,rgba(7,176,237,.07),rgba(233,65,53,.07));
+    border:1px solid rgba(7,176,237,.22);border-radius:16px;padding:16px 17px 14px;margin:14px 0;text-align:left}
+  .dj-t{margin:0 0 9px;font-size:16px;font-weight:900;color:var(--ink);text-align:center}
+  .dj-p{margin:0 0 9px;font-size:15px;line-height:1.5;color:var(--ink-soft);font-weight:600}
+  .dj-p b{color:var(--ink);font-weight:800}
+  .dj-f{margin:0;color:var(--coral-d);font-weight:800}
+  .dj-f b{color:var(--coral-d)}
+
   /* mecanismo em 3 movimentos, na tela da oferta */
   .mec-t{text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--faint);font-weight:800;margin:0 0 10px}
@@ -953,7 +962,7 @@
       linhaDesejo+
       '<p style="margin:0 0 9px;font-size:15px">✅ <b>O que já existe em você:</b> '+forte+'</p>'+
       '<p style="margin:0 0 10px;font-size:15px">🎯 <b>O seu próximo passo:</b> '+gap+'</p>'+
-      '<p style="margin:0;font-size:15px;color:var(--coral-d);font-weight:700">💡 É para isso que existe o <b>Mapa Mental da Umbanda</b>: para reunir os fundamentos em uma jornada simples e visual, ajudando você a entender melhor a religião, se sentir mais próximo do caminho e estudar com mais consciência.</p>'+
+      '<p style="margin:0;font-size:15px;color:var(--ink-soft);font-weight:600">Esse é o retrato de onde você está hoje. 👇 Agora, o caminho.</p>'+
     '</div>';
   }
 
@@ -976,7 +985,7 @@
       mirrorText()+
       diagnostico()+
       // sem depoimentos aqui: eles aparecem na tela seguinte, embaixo do vídeo
-      guideLine("Preparei o caminho ideal para o seu perfil...")+
+      '<div class="desejo">'+'<p class="dj-t">🧭 O caminho que liga tudo isso</p>'+'<p class="dj-p">O <b>Mapa Mental da Umbanda</b> reúne os fundamentos, os Orixás, as entidades e a natureza numa jornada visual e acolhedora.</p>'+'<p class="dj-p">É o que faz a Umbanda deixar de ser algo que você admira <b>de longe</b> e passar a ser algo que você compreende <b>de perto</b> — com respeito, com calma e no seu tempo.</p>'+'<p class="dj-p dj-f">E a caridade deixa de ser uma palavra bonita: vira um jeito de estar no mundo.</p>'+'</div>'+      guideLine("Preparei o caminho ideal para o seu momento...")+
       '<button class="btn btn-gold pulse-cta" data-act="next">Quero compreender melhor minha caminhada <span aria-hidden="true">→</span></button>'+
       '</div>';
     var target=state.displayScore;
