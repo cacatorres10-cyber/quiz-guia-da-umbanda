@@ -327,9 +327,6 @@
 
   .badge-top{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:#fff;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin:0 auto 6px}
 
-  .redeem{background:linear-gradient(to right,rgba(147,51,234,.10),rgba(79,70,229,.08));border:1px solid rgba(147,51,234,.24);border-radius:14px;padding:15px 16px;text-align:center;margin:6px 0 14px}
-  .redeem .rt{font-size:15px;color:var(--ink-soft);font-weight:700}
-  .redeem b{color:var(--purple-ink)}
 
   /* ---- planos (tiers) ---- */
   .plans-title{text-align:center;font-weight:900;font-size:24px;color:var(--ink);margin:18px 0 4px;letter-spacing:-.3px}
@@ -1084,7 +1081,6 @@
     app.innerHTML='<div class="view">'+
       '<div class="center"><span class="badge-top">🔥 O mais escolhido</span></div>'+
       '<h2 class="sec-h">'+nm+' está a um passo de <span class="hl">viver a Umbanda mais de perto</span></h2>'+'<p class="center lead" style="font-size:15px;margin:0 0 14px">Aproxime-se mais da Umbanda, compreenda os fundamentos do seu caminho e descubra como <b>viver a caridade com mais consciência, respeito e conexão</b>.</p>'+'<p class="mec-t">Como a jornada acontece</p>'+'<ol class="mec">'+'<li><span class="mn">1</span><div><b>Você organiza o entendimento</b><small>Os fundamentos deixam de estar espalhados e ganham ordem.</small></div></li>'+'<li><span class="mn">2</span><div><b>As peças se conectam</b><small>Orixás, entidades, natureza, rituais e caridade passam a fazer sentido juntos.</small></div></li>'+'<li><span class="mn">3</span><div><b>Você caminha com mais presença</b><small>Com segurança para viver o que aprende, sem substituir a orientação do seu terreiro.</small></div></li>'+'</ol>'+
-      '<div class="redeem"><div class="rt">💎 Você acumulou <b>'+state.points+' pontos</b> de Saldo Espiritual.</div><div class="rt" style="margin-top:4px">Eles desbloquearam o <b>valor promocional de hoje</b>, válido enquanto esta página estiver aberta.</div></div>'+
       '<div class="timer"><span>⏳ Sua condição expira em</span><span class="clock" id="clock">15:00</span></div>'+
       '<p class="prod-sub"><b>Mapa Mental da Umbanda</b>: uma jornada visual e acolhedora para quem deseja entender melhor a religião, se sentir mais próximo do caminho e transformar conhecimento em vivência.</p>'+'<div class="card"><ul class="stack">'+STACK.map(function(s){return stackRow(s);}).join("")+
         '<div class="totrow"><span class="tl">Valor real de tudo:</span><span class="tv">R$'+total+'</span></div>'+
